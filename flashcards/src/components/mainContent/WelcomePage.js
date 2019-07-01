@@ -1,5 +1,6 @@
 import React from 'react';
 import styled, { injectGlobal } from 'styled-components';
+import { Link } from "react-router-dom";
 
 const HeaderContent = styled.div`
 
@@ -43,6 +44,9 @@ const MainContent = styled.div`
     .ios {
       background: rgb(26, 62, 116);
     }
+    .cs {
+      background: rgb(47, 98, 169);
+    }
   }
 `
 
@@ -59,13 +63,19 @@ const WelcomePage = () => {
       </p>
     </HeaderContent>
     <MainContent>
-      <div className="box android">Android Development</div>
-      <div className="box fullstack">Full Stack Web Development</div>
-      <div className="box datas">Data Science</div>
-      <div className="box uxd">User Experience Design</div>
-      <div className="box ios">iOS Development</div>
+
+        <Link to="/android_development"><div className="box android">Android Development</div></Link>
+        <Link to="/full_stack"><div className="box fullstack">Full Stack Web Development</div></Link>
+        <Link to="/data_science"><div className="box datas">Data Science</div></Link>
+        <Link to="/uxdesign"><div className="box uxd">User Experience Design</div></Link>
+        <Link to="/ios_development"><div className="box ios">iOS Development</div></Link>
+        <Link to="/computer_science"><div className="box cs">Computer Science</div></Link>
+
     </MainContent>
     </div>
   );
 };
 export default WelcomePage;
+
+
+//window.location.assign('/android_development')
