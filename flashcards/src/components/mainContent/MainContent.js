@@ -1,10 +1,9 @@
 import React from 'react';
+import WelcomePage from './WelcomePage';
 
 const MainContent = (props) => {
     return (
-        <div className='mainContent'>
-          Flashcards
-        </div>
+      <WelcomePage />
     );
 };
 export default MainContent;
