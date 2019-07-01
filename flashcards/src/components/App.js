@@ -3,7 +3,6 @@ import Header from "./header/Header";
 import MainContent from "./mainContent/MainContent";
 import Footer from "./footer/Footer";
 import {BrowserRouter, Route} from 'react-router-dom';
-import styled, { injectGlobal } from 'styled-components';
 import Android from './mainContent/Android';
 import ComputerScience from './mainContent/ComputerScience';
 import UXDesign from './mainContent/UXDesign';
@@ -12,17 +11,11 @@ import FullStack from './mainContent/FullStack';
 import DataScience from './mainContent/DataScience';
 
 
-const Body = styled.div `
-  background: rgb(241, 244, 247);
-  height: 100%;
-  margin: 0 auto;
-`
-
 class App extends Component {
   render() {
     return (
       <BrowserRouter>
-      <Body> 
+      <div> 
           <Route exact path="/" render={() => 
             <div>
               <Header />
@@ -72,7 +65,7 @@ class App extends Component {
               <UXDesign />
             </div>
           } /> 
-      </Body>
+      </div>
       </BrowserRouter>
     );
   }

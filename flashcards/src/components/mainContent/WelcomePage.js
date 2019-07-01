@@ -64,12 +64,12 @@ const WelcomePage = () => {
     </HeaderContent>
     <MainContent>
 
-        <Link to="/android_development"><div className="box android">Android Development</div></Link>
-        <Link to="/full_stack"><div className="box fullstack">Full Stack Web Development</div></Link>
-        <Link to="/data_science"><div className="box datas">Data Science</div></Link>
-        <Link to="/uxdesign"><div className="box uxd">User Experience Design</div></Link>
-        <Link to="/ios_development"><div className="box ios">iOS Development</div></Link>
-        <Link to="/computer_science"><div className="box cs">Computer Science</div></Link>
+        <Link to="/android_development" style={{ textDecoration: 'none' }}><div className="box android">Android Development</div></Link>
+        <Link to="/full_stack" style={{ textDecoration: 'none' }}><div className="box fullstack">Full Stack Web Development</div></Link>
+        <Link to="/data_science" style={{ textDecoration: 'none' }}><div className="box datas">Data Science</div></Link>
+        <Link to="/uxdesign" style={{ textDecoration: 'none' }}><div className="box uxd">User Experience Design</div></Link>
+        <Link to="/ios_development" style={{ textDecoration: 'none' }}><div className="box ios">iOS Development</div></Link>
+        <Link to="/computer_science" style={{ textDecoration: 'none' }}><div className="box cs">Computer Science</div></Link>
 
     </MainContent>
     </div>
