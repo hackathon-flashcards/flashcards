@@ -1,25 +1,24 @@
 import React from 'react';
-// import styled from '../../assets/styles.js';
 import styled, { injectGlobal } from 'styled-components';
+import logo from '../../assets/logo.png';
 
 const Nav = styled.div`
 
   @media (max-width: 414px) {
     display: flex;
     justify-content: space-between;
-    align-content: middle;
+    align-items: center;
     width: 100%;
     margin: 0 auto;
     color: white;
     background-color: rgb(20, 18, 30);
     .logo {
-      margin-left: 20px;
-      width: 40px;
-      height: auto;
-      background: gray;
+      margin-left: 10px;
+      padding-top: 7px;
+      padding-bottom: 7px;
     }
     .menu {
-      margin-right: 20px;
+      margin-right: 10px;
     }
 }
 `
@@ -27,7 +26,7 @@ const Nav = styled.div`
 const Header = () => {
   return (
     <Nav>
-      <div className="logo"></div>
+      <img className="logo" src={logo} alt="logo"/>
       <div className="menu">
         <svg width="32" height="32" xmlns="http://www.w3.org/2000/svg">
           <g>

@@ -76,6 +76,3 @@ const WelcomePage = () => {
   );
 };
 export default WelcomePage;
-
-
-//window.location.assign('/android_development')
