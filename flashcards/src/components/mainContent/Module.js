@@ -244,7 +244,7 @@ class Module extends Component {
               </Card>
            </Link>
 
-          ))};
+          ))}
         </MainContent>
 
       </div>
