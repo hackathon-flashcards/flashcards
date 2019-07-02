@@ -3,7 +3,7 @@ import WelcomePage from './WelcomePage';
 
 const MainContent = (props) => {
     return (
-      <WelcomePage />
+      <WelcomePage data={props.data}/>
     );
 };
 export default MainContent;

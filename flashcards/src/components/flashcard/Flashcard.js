@@ -123,8 +123,22 @@ class Flashcard extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            isFlipped: false
+            isFlipped: false,
+            current: '',
+            front: '',
+            back: ''
         };
+        console.log("PROPS??", this.props.data[0])
+    }
+
+    componentDidMount() {
+      if (this.props.data[0].flashcards.length > 0) {
+      this.setState({
+        current: this.props.data[0].flashcards[0],
+        front: this.props.data[0].flashcards[0][0],
+        back: this.props.data[0].flashcards[0][1]
+      })
+    }
     }
 
     changeSide = () => {
@@ -132,16 +146,17 @@ class Flashcard extends Component {
     };
 
     render() {
+      if (this.state.front && this.state.back && this.props.data[0].flashcards.length > 0) {
         const { isFlipped } = this.state;
 
         return (
             <div>
                 <Header />
                 <FlashcardContent>
-                    <h2>Advanced React</h2>
+                    <h2>{this.props.data[0].section}</h2>
                     <PreviousSectionButton>
-                        <i class="fas fa-arrow-left" />
-                        <p>Full Stack Web</p>
+                        <i className="fas fa-arrow-left" />
+                        <p>{this.props.data[0].module}</p>
                     </PreviousSectionButton>
                     <div onClick={this.changeSide}>
                         <ReactCardFlip
@@ -155,11 +170,12 @@ class Flashcard extends Component {
                                         <p>Front</p>
                                     </SideIndicator>
                                     <p>
-                                        Lorem ipsum dolor sit amet, consectetur
+                                        {/* Lorem ipsum dolor sit amet, consectetur
                                         adipiscing elit. Sed nisl est, malesuada
                                         at euismod et, porta a nunc. Suspendisse
                                         eget urna dignissim augue fermentum
-                                        varius vitae sed nisi.
+                                        varius vitae sed nisi. */}
+                                        {this.state.front}
                                     </p>
                                 </CardContent>
                             </Card>
@@ -169,11 +185,12 @@ class Flashcard extends Component {
                                         <p>Back</p>
                                     </SideIndicator>
                                     <p>
-                                        Lorem ipsum dolor sit amet, consectetur
+                                        {/* Lorem ipsum dolor sit amet, consectetur
                                         adipiscing elit. Sed nisl est, malesuada
                                         at euismod et, porta a nunc. Suspendisse
                                         eget urna dignissim augue fermentum
-                                        varius vitae sed nisi.
+                                        varius vitae sed nisi. */}
+                                        {this.state.back}
                                     </p>
                                 </CardContent>
                             </Card>
@@ -185,16 +202,19 @@ class Flashcard extends Component {
                         </p>
                     </CardCount>
                     <NextButton>
-                        <i class="fas fa-arrow-right" />
+                        <i className="fas fa-arrow-right" />
                         <p>Next</p>
                     </NextButton>
                     <BackButton>
-                        <i class="fas fa-arrow-left" />
+                        <i className="fas fa-arrow-left" />
                         <p>Back</p>
                     </BackButton>
                 </FlashcardContent>
             </div>
         );
+      } else {
+        return <p>Loading...</p>
+      }
     }
 }
 

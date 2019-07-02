@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const TopContent = styled.div`
 
@@ -39,6 +40,10 @@ const TopContent = styled.div`
 `;
 const MainContent = styled.div`
 
+  a {
+    color: black;
+  }
+
   @media (max-width: 414px) {
 
   }
@@ -64,6 +69,7 @@ const Card = styled.div`
       .number {
         font-size: 16px;
         padding-top: 3px;
+        color: #BA112E;
       }
     }
     .p {
@@ -80,43 +86,134 @@ class Module extends Component {
 
     this.state = {
       section: [],
-      count: []
+      flashcards: [],
     }
+    this.handleClick = this.handleClick.bind(this)
+    console.log(this.props.data)
+  }
+
+  handleClick(item) {
+   console.log('ITEM ', item);
+   console.log('STATE', this.state);
+   let index = this.state.section.indexOf(item);
+   console.log('INDEX', index);
+   this.props.data[0].section = item;
+   this.props.data[0].module = this.props.module;
+   this.props.data[0].flashcards = this.state.flashcards[index];
+   console.log('PROPS', this.props.data)
   }
 
   componentDidMount() {
-    axios.get("https://api.sheety.co/1ca8f077-96e2-4abf-9456-cd2783dcabc8")
-        .then((response) => {
+    const fswUrl = 'https://api.sheety.co/1ca8f077-96e2-4abf-9456-cd2783dcabc8';
+    const dsUrl = 'https://api.sheety.co/d83bb79c-314f-4a4f-b2d0-4771f7733e23';
+    const andUrl = 'https://api.sheety.co/a53cb220-8c60-4bf2-9896-1b0a2dfab162';
+    const iOSUrl = 'https://api.sheety.co/5322bd02-41bc-41c2-b914-62b031897e7d';
+    const uxUrl = 'https://api.sheety.co/4f638b06-ad67-4190-beb4-673d13ff8f2a';
+    const csUrl = 'https://api.sheety.co/95cbfcbd-f627-4c55-a33f-e87d5bea22f7';
 
-          let sectionArr = [];
-          let countArr = [];
-          let count = 0;
-          let section = response.data[0].section;
-          response.data.forEach(item => {
-            if (JSON.stringify(item.section) !== JSON.stringify(section)) {
-              sectionArr.push(section)
-              section = item.section;
-              countArr.push(count)
-              count = 1;
-            } else {
-              count++;
-            }
-          });
-          this.setState({section: sectionArr});
-          this.setState({count: countArr});
-        })
-        .catch(error => {
-            console.log("Error parsing data", error);
-        });
+    let currentUrl = '';
     
+    switch (this.props.module) {
+      case 'Full Stack Web':
+        currentUrl = fswUrl;
+        break;
+      case 'Data Science':
+        currentUrl = dsUrl;
+        break;
+      case 'Android Development':
+        currentUrl = andUrl;
+        break;
+      case 'iOS Development':
+        currentUrl = iOSUrl;
+        break;
+      case 'UX Design':
+        currentUrl = uxUrl;
+        break;
+      case 'Computer Science':
+        currentUrl = csUrl;
+        break;
+      default:
+        break;
+    }
+
+    axios.get(currentUrl)
+    .then(response => {
+                    /*
+        SA: [
+        'UI/GIT',
+        'Advanced CSS',
+        "React',
+        "Whatever'
+        ];
+        FA: [
+        [
+          {question: bla, answer: bla},
+          {question: bla, answer: bla},
+          {question: bla, answer: bla}
+        ],
+        [
+          {question: bla, answer: bla},
+          {question: bla, answer: bla},
+          {question: bla, answer: bla}
+        ],
+        [
+          {question: bla, answer: bla},
+          {question: bla, answer: bla},
+          {question: bla, answer: bla}
+        ],
+        [
+          {question: bla, answer: bla},
+          {question: bla, answer: bla},
+          {question: bla, answer: bla}
+        ],
+        ];
+        */
+
+      let sectionArray = [response.data[0].section];
+      let flashcardArray = [[]];
+
+      let currentSection = response.data[0].section;
+      let currentIndex = 0;
+      
+      // go through each object???? in the response
+      for (let i = 0; i < response.data.length; i++) {
+
+          if (response.data[i].section === currentSection) {
+            if (response.data[i].question && response.data[i].answer) {
+              flashcardArray[currentIndex].push([
+                response.data[i].question,
+                response.data[i].answer
+              ]);
+            }
+          } else {
+            sectionArray.push(response.data[i].section);
+            currentSection = response.data[i].section;
+            flashcardArray.push([]);
+            currentIndex++;
+
+            if (response.data[i].question && response.data[i].answer) {
+              flashcardArray[currentIndex].push([
+                response.data[i].question,
+                response.data[i].answer
+              ]);
+            }
+          }              
+
+      }
+      this.setState({section: sectionArray, flashcards: flashcardArray});
+    })
+    .catch(error => {
+      console.log(error);
+    });
   }
 
 
   render() {
-    return (
-      <div> 
+    if (this.state.flashcards.length > 0 && this.state.section.length > 0) {
+      return (
+        <div> 
         <TopContent>
-          <h1>Full Stack Web</h1>
+          <h1>{this.props.module}</h1>
           <div>
           <input type="text" className="input" placeholder="Search..." />
           <svg className="icon" width="32" height="32" xmlns="http://www.w3.org/2000/svg">
@@ -135,16 +232,25 @@ class Module extends Component {
           </div>
         </TopContent>
         <MainContent>
-          <Card>
-            <div className="first-row">
-              <p></p>
-              <p className="number"> Flashcards</p>
-            </div>
-            <p className="p">World's shortest summary about this topic here.</p>
-          </Card>
+          {this.state.section.map((item, index) => (
+            <Link to={`/${this.props.url}/flashcard/${index + 1}`} key={index} style={{ textDecoration: 'none' }}>
+              <Card onClick={() => this.handleClick(item)}>
+                <div className="first-row">
+                  <p>{item}</p>
+                  <p className="number">{this.state.flashcards[index].length} Flashcards</p>
+                </div>
+                <p className="p">World's shortest summary about this topic here.</p>
+              </Card>
+           </Link>
+
+          ))};
         </MainContent>
+
       </div>
     );
+    } else {
+    return <p>Loading...</p>
+    }
   }
 }
 
