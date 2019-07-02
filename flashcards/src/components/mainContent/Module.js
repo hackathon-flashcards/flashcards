@@ -74,7 +74,7 @@ const Card = styled.div`
 `
 
 
-class FullStack extends Component {
+class Module extends Component {
   constructor(props) {
     super(props);
 
@@ -82,12 +82,9 @@ class FullStack extends Component {
       section: [],
       count: []
     }
-  // console.log("PROPS", props.data)
   }
 
   componentDidMount() {
- 
- 
     axios.get("https://api.sheety.co/1ca8f077-96e2-4abf-9456-cd2783dcabc8")
         .then((response) => {
 
@@ -107,7 +104,6 @@ class FullStack extends Component {
           });
           this.setState({section: sectionArr});
           this.setState({count: countArr});
-          // console.log('STATE', this.state.section.length, 'COUNT', this.state.count.length)
         })
         .catch(error => {
             console.log("Error parsing data", error);
@@ -141,17 +137,15 @@ class FullStack extends Component {
         <MainContent>
           <Card>
             <div className="first-row">
-              <p>{this.state.section[0]}</p>
-              <p className="number">{this.state.count[0]} Flashcards</p>
+              <p></p>
+              <p className="number"> Flashcards</p>
             </div>
             <p className="p">World's shortest summary about this topic here.</p>
           </Card>
         </MainContent>
-
       </div>
-  
     );
   }
 }
 
-export default FullStack;
+export default Module;

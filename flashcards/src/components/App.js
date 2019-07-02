@@ -9,6 +9,7 @@ import UXDesign from './mainContent/UXDesign';
 import IOS from './mainContent/IOS';
 import FullStack from './mainContent/FullStack';
 import DataScience from './mainContent/DataScience';
+import Module from './mainContent/Module';
 
 
 class App extends Component {
@@ -51,6 +52,13 @@ class App extends Component {
               <FullStack />
             </div>
           } /> 
+
+          {/* <Route exact path="/module" render={() =>  
+            <div>
+              <Header />
+              <Module />
+            </div>
+          } />  */}
 
           <Route exact path="/ios_development" render={() =>  
             <div>

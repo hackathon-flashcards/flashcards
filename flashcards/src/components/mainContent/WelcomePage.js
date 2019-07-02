@@ -1,6 +1,8 @@
-import React from 'react';
-import styled, { injectGlobal } from 'styled-components';
+import React, {Component} from 'react';
+import styled from 'styled-components';
 import { Link } from "react-router-dom";
+import axios from 'axios';
+import FullStack from './FullStack';
 
 const HeaderContent = styled.div`
 
@@ -22,6 +24,7 @@ const MainContent = styled.div`
 
     .box {
       color: white;
+      font-size: 18px;
       height: 40px;
       border-radius: 5px;
       line-height: 40px;
@@ -50,7 +53,24 @@ const MainContent = styled.div`
   }
 `
 
-const WelcomePage = () => {
+class WelcomePage extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      section: '',
+      count: [],
+    }
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick() {
+    this.setState({section: "Web Section HI"});
+    console.log(this.state.section)
+
+  }
+
+  render() {
   return (
     <div>
     <HeaderContent>
@@ -64,8 +84,15 @@ const WelcomePage = () => {
     </HeaderContent>
     <MainContent>
 
-        <Link to="/android_development" style={{ textDecoration: 'none' }}><div className="box android">Android Development</div></Link>
-        <Link to="/full_stack" style={{ textDecoration: 'none' }}><div className="box fullstack">Full Stack Web Development</div></Link>
+        <Link to="/android_development" style={{ textDecoration: 'none' }}><div className="box android" onClick={this.handleClick}>Android Development</div></Link>
+        {/* <Link to={{
+          pathname: '/module',
+          state: {
+            word: "hello"
+          }
+        }} ><div className="box fullstack">Full Stack Web Development</div></Link> */}
+        <Link to="/full_stack" ><div className="box fullstack">Full Stack Web Development</div></Link>
+
         <Link to="/data_science" style={{ textDecoration: 'none' }}><div className="box datas">Data Science</div></Link>
         <Link to="/uxdesign" style={{ textDecoration: 'none' }}><div className="box uxd">User Experience Design</div></Link>
         <Link to="/ios_development" style={{ textDecoration: 'none' }}><div className="box ios">iOS Development</div></Link>
@@ -74,5 +101,7 @@ const WelcomePage = () => {
     </MainContent>
     </div>
   );
-};
+}
+}
+
 export default WelcomePage;
