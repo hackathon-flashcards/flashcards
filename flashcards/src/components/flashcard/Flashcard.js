@@ -9,6 +9,7 @@ import Header from '../header/Header';
 // -------- Styled Components -------------- //
 
 const FlashcardContent = styled.div`
+@media (max-width: 414px) {
     width: 93.5%;
     margin: 0 auto;
     display: flex;
@@ -17,9 +18,11 @@ const FlashcardContent = styled.div`
     h2 {
         font-size: 30px;
     }
+}
 `;
 
 const PreviousSectionButton = styled.div`
+@media (max-width: 414px) {
     background-color: #d4dfe8;
     width: 140px;
     height: 27px;
@@ -35,17 +38,21 @@ const PreviousSectionButton = styled.div`
     p {
         font-size: 14px;
     }
+}
 `;
 
 const Card = styled.div`
+@media (max-width: 414px) {
     margin-top: 25px;
     width: 100%;
     height: 308px;
     background-color: #ffffff;
     border-radius: 5px;
+}
 `;
 
 const CardContent = styled.div`
+@media (max-width: 414px) {
     width: 100%;
     height: 308px;
     display: flex;
@@ -59,9 +66,11 @@ const CardContent = styled.div`
         line-height: 1.5;
         width: 90%;
     }
+}
 `;
 
 const SideIndicator = styled.div`
+@media (max-width: 414px) {
     text-transform: uppercase;
     opacity: 0.25;
     position: absolute;
@@ -71,9 +80,11 @@ const SideIndicator = styled.div`
     p {
         font-size: 14px;
     }
+}
 `;
 
 const CardCount = styled.div`
+@media (max-width: 414px) {
     width: 100%;
     margin-top: 12px;
     display: flex;
@@ -83,9 +94,11 @@ const CardCount = styled.div`
         margin: 0 2px;
         font-weight: bold;
     }
+}
 `;
 
 const NextButton = styled.div`
+@media (max-width: 414px) {
     margin: 10px 0;
     width: 337px;
     height: 40px;
@@ -106,15 +119,18 @@ const NextButton = styled.div`
         font-size: 14px;
         color: #ffffff;
     }
+}
 `;
 
 const BackButton = styled(NextButton)`
+@media (max-width: 414px) {
     flex-direction: row-reverse;
 
     .fas {
         right: auto;
         left: 10px;
     }
+}
 `;
 
 // -------- Flashcard Component ------------ //
