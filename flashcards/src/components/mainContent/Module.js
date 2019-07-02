@@ -100,6 +100,7 @@ class Module extends Component {
    this.props.data[0].section = item;
    this.props.data[0].module = this.props.module;
    this.props.data[0].flashcards = this.state.flashcards[index];
+   this.props.data[0].path = this.props.url;
    console.log('PROPS', this.props.data)
   }
 
@@ -243,7 +244,7 @@ class Module extends Component {
               </Card>
            </Link>
 
-          ))};
+          ))}
         </MainContent>
 
       </div>
