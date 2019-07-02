@@ -2,6 +2,7 @@ const data = [
   {
     "section": '',
     "module": '',
+    "path": '',
     "flashcards": []
   }
 ]
