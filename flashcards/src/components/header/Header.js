@@ -3,21 +3,6 @@ import styled, { injectGlobal } from 'styled-components';
 import logo from '../../assets/logo.png';
 
 const Nav = styled.div`
-display: flex;
-justify-content: space-between;
-align-items: center;
-width: 100%;
-margin: 0 auto;
-color: white;
-background-color: rgb(20, 18, 30);
-.logo {
-  margin-left: 10px;
-  padding-top: 7px;
-  padding-bottom: 7px;
-}
-.menu {
-  margin-right: 10px;
-}
 
   @media (max-width: 414px) {
     display: flex;
@@ -35,7 +20,7 @@ background-color: rgb(20, 18, 30);
     .menu {
       margin-right: 10px;
     }
-  }
+}
 `
 
 const Header = () => {
