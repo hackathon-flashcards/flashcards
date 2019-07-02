@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import ReactCardFlip from 'react-card-flip';
 
 // --------- Imported Components ------------ //
 
@@ -42,6 +43,11 @@ const Card = styled.div`
     height: 308px;
     background-color: #ffffff;
     border-radius: 5px;
+`;
+
+const CardContent = styled.div`
+    width: 100%;
+    height: 308px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -114,7 +120,20 @@ const BackButton = styled(NextButton)`
 // -------- Flashcard Component ------------ //
 
 class Flashcard extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            isFlipped: false
+        };
+    }
+
+    changeSide = () => {
+        this.setState({ isFlipped: !this.state.isFlipped });
+    };
+
     render() {
+        const { isFlipped } = this.state;
+
         return (
             <div>
                 <Header />
@@ -124,17 +143,42 @@ class Flashcard extends Component {
                         <i class="fas fa-arrow-left" />
                         <p>Full Stack Web</p>
                     </PreviousSectionButton>
-                    <Card>
-                        <SideIndicator>
-                            <p>Front</p>
-                        </SideIndicator>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing
-                            elit. Sed nisl est, malesuada at euismod et, porta a
-                            nunc. Suspendisse eget urna dignissim augue
-                            fermentum varius vitae sed nisi.
-                        </p>
-                    </Card>
+                    <div onClick={this.changeSide}>
+                        <ReactCardFlip
+                            isFlipped={isFlipped}
+                            flipSpeedBackToFront="2"
+                            flipSpeedFrontToBack="2"
+                        >
+                            <Card key="front">
+                                <CardContent>
+                                    <SideIndicator>
+                                        <p>Front</p>
+                                    </SideIndicator>
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur
+                                        adipiscing elit. Sed nisl est, malesuada
+                                        at euismod et, porta a nunc. Suspendisse
+                                        eget urna dignissim augue fermentum
+                                        varius vitae sed nisi.
+                                    </p>
+                                </CardContent>
+                            </Card>
+                            <Card key="back">
+                                <CardContent>
+                                    <SideIndicator>
+                                        <p>Back</p>
+                                    </SideIndicator>
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur
+                                        adipiscing elit. Sed nisl est, malesuada
+                                        at euismod et, porta a nunc. Suspendisse
+                                        eget urna dignissim augue fermentum
+                                        varius vitae sed nisi.
+                                    </p>
+                                </CardContent>
+                            </Card>
+                        </ReactCardFlip>
+                    </div>
                     <CardCount>
                         <p>
                             <span>1</span> of <span>4</span>
