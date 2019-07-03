@@ -24,7 +24,9 @@ const HeaderContent = styled.div`
 const MainContent = styled.div`
 padding-top: 30px;
 text-align: center;
-
+display: flex;
+flex-direction: column;
+justify-content: center;
 
 .box {
   color: white;
@@ -33,7 +35,6 @@ text-align: center;
   max-width: 450px;
   border-radius: 5px;
   line-height: 40px;
-  vertical-align: middle;
   padding: 10px 10px 10px 10px;
   margin: 10px 10px 20px 10px;
 }

@@ -11,7 +11,7 @@ h1 {
   
 }
 input {
-  width: 100%;
+  width: 450px;
   height: 55px;
   margin-right: 10px;
   margin: 0 auto;
@@ -84,13 +84,15 @@ background: rgb(214, 223, 231);
     margin: 20px 10px 20px 10px;
     border-radius: 5px;
     padding: 10px 0 10px 0;
-    max-width: 375px;
+    max-width: 450px;
 
     .first-row {
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 0 10px 15px 10px;
+      font-weight: bold;
+
       p {
         margin: 0;
         font-size: 20px;
@@ -117,6 +119,7 @@ background: rgb(214, 223, 231);
       justify-content: space-between;
       align-items: center;
       padding: 0 10px 15px 10px;
+      font-weight: bold;
       p {
         margin: 0;
         font-size: 20px;
