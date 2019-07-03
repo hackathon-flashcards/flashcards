@@ -153,6 +153,7 @@ const MainContent = styled.div`
     @media (max-width: 414px) {
         padding-top: 30px;
         text-align: center;
+        justify-content: normal;
 
         .row-one,
         .row-two {
