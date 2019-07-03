@@ -2,15 +2,78 @@ import React, {Component} from 'react';
 import styled from 'styled-components';
 import { Link } from "react-router-dom";
 import axios from 'axios';
-// import FullStack from './FullStack';
+import logo from '../../assets/logo.png';
 
-const HeaderContent = styled.div`
-  padding-left: 10px;
-  padding-right: 10px;
-
-  p {
-    padding-right: 30px;
+const DesktopWelcome = styled.div`
+  @media (max-width: 1900px) {
+    display: flex;
+    justify-content: space-between;
+    // flex-direction: row;
   }
+  @media (max-width: 414px) {
+
+  }
+`
+const DesktopSide = styled.div`
+  // display: flex;
+  // flex-direction: column;
+  min-width: 350px;
+  height: 100vh;
+  margin: 0 auto;
+  background: rgb(20, 18, 30);
+  // top: 0;
+  // bottom: 0;
+  // position: absolute;
+  box-sizing: border-box;
+  padding: 20px;
+  text-align: center;
+  overflow: hidden;
+ 
+
+  .links {
+    height: 100%;
+    display: block;
+    flex-direction: column;
+    justify-items: center;
+    align-content: stretch;
+    margin-top: 60%;
+  }
+
+  .logo {
+    // width: 100%;
+    display: inline-block;
+    // padding: 20px;
+    box-sizing: border-box;
+  }
+  .title {
+    font-size: 22px;
+    color: #ba112e;
+    display: inline-block;
+    padding-left: 10px;
+    box-sizing: border-box;
+  }
+  .text {
+    font-size: 20px;
+    color: white;
+    text-align: left;
+    padding: 0 0px 20px 30px;
+  }
+
+  @media (max-width: 414px) {
+    display: none;
+  }
+`
+const HeaderContent = styled.div`
+  @media (max-width: 1800px) {
+    padding-left: 35px;
+    padding-right: 20px;
+    padding-top: 40px;
+
+    p {
+      padding-right: 30px;
+    }
+  }
+
   @media (max-width: 414px) {
     padding-left: 10px;
     padding-right: 10px;
@@ -22,64 +85,88 @@ const HeaderContent = styled.div`
 `;
 
 const MainContent = styled.div`
-padding-top: 30px;
-text-align: center;
+@media (max-width: 1800px) {
+  padding-top: 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
+  .row-one {
+    display: flex;
+    justify-content: center;
+  }
 
-.box {
-  color: white;
-  font-size: 18px;
-  height: 40px;
-  max-width: 450px;
-  border-radius: 5px;
-  line-height: 40px;
-  vertical-align: middle;
-  padding: 10px 10px 10px 10px;
-  margin: 10px 10px 20px 10px;
-}
-.android {
-  background: rgb(20, 18, 30);
-}
-.android:hover {
-  transform: scale(1.1);
-}
-.fullstack {
-  background: rgb(46, 45, 73);
-}
-.fullstack:hover {
-  transform: scale(1.1);
-}
-.datas {
-  background: rgb(95, 180, 225);
-}
-.datas:hover {
-  transform: scale(1.1);
-}
-.uxd {
-  background: rgb(20, 18, 30);
-}
-.uxd:hover {
-  transform: scale(1.1);
-}
-.ios {
-  background: rgb(26, 62, 116);
-}
-.ios:hover {
-  transform: scale(1.1);
-}
-.cs {
-  background: rgb(47, 98, 169);
-}
-.cs:hover {
-  transform: scale(1.1);
-}
+  .row-two {
+    display: flex;
+    justify-content: center;
+  }
 
+  .box {
+    color: white;
+    font-size: 18px;
+    height: 160px;
+    width: 250px;
+    border-radius: 5px;
+    line-height: 160px;
+    vertical-align: middle;
+    padding: 10px 20px 20px 20px;
+    margin: 10px 10px 10px 10px;
+  }
+  .android {
+    background: rgb(20, 18, 30);
+  }
+  .android:hover {
+    transform: scale(1.01);
+  }
+  .fullstack {
+    background: rgb(46, 45, 73);
+  }
+  .fullstack:hover {
+    transform: scale(1.01);
+  }
+  .datas {
+    background: rgb(95, 180, 225);
+  }
+  .datas:hover {
+    transform: scale(1.01);
+  }
+  .uxd {
+    background: rgb(20, 18, 30);
+  }
+  .uxd:hover {
+    transform: scale(1.01);
+  }
+  .ios {
+    background: rgb(26, 62, 116);
+  }
+  .ios:hover {
+    transform: scale(1.01);
+  }
+  .cs {
+    background: rgb(47, 98, 169);
+  }
+  .cs:hover {
+    transform: scale(1.01);
+  }
+}
   @media (max-width: 414px) {
     padding-top: 30px;
     text-align: center;
 
+    .row-one {
+      display: block;
+      justify-content: center;
+    }
+  
+    .row-two {
+      display: block;
+      justify-content: center;
+    }
+
     .box {
       color: white;
+      width: auto;
       font-size: 18px;
       height: 40px;
       border-radius: 5px;
@@ -87,6 +174,7 @@ text-align: center;
       vertical-align: middle;
       padding: 10px 10px 10px 10px;
       margin: 10px 10px 20px 10px;
+      overflow: hidden;
     }
     .android {
       background: rgb(20, 18, 30);
@@ -96,6 +184,7 @@ text-align: center;
     }
     .datas {
       background: rgb(95, 180, 225);
+      margin-bottom: 10px;
     }
     .uxd {
       background: rgb(20, 18, 30);
@@ -151,29 +240,46 @@ class WelcomePage extends Component {
 
   render() {
   return (
-    <div>
-    <HeaderContent>
-      <h1>Welcome</h1>
-      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut 
-         aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in 
-         voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur 
-         sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt 
-         mollit anim id est laborum.
-      </p>
-    </HeaderContent>
-    <MainContent>
-
-        <Link to="/android_development" style={{ textDecoration: 'none' }}><div className="box android">Android Development</div></Link>
-        <Link to="/full_stack" style={{ textDecoration: 'none' }}><div className="box fullstack">Full Stack Web Development</div></Link>
-        {/* <Link to="/full_stack" ><div className="box fullstack">Full Stack Web Development</div></Link> */}
-
-        <Link to="/data_science" style={{ textDecoration: 'none' }}><div className="box datas">Data Science</div></Link>
-        <Link to="/ux_design" style={{ textDecoration: 'none' }}><div className="box uxd">User Experience Design</div></Link>
-        <Link to="/ios_development" style={{ textDecoration: 'none' }}><div className="box ios">iOS Development</div></Link>
-        <Link to="/computer_science" style={{ textDecoration: 'none' }}><div className="box cs">Computer Science</div></Link>
-
-    </MainContent>
-    </div>
+    <DesktopWelcome>
+      <DesktopSide>
+        <div>
+          <img className="logo" src={logo} alt="logo"/>
+          <div className="title">Lambda Flash Cards</div>
+        </div>
+        <div className="links">
+          <Link to="/" style={{ textDecoration: 'none' }}><div className="text" >Home</div></Link>
+          <Link to="/android_development" style={{ textDecoration: 'none' }}><div className="text" >Android Development</div></Link>
+          <Link to="/full_stack" style={{ textDecoration: 'none' }}><div className="text" >Full Stack Web</div></Link>
+          <Link to="/data_science" style={{ textDecoration: 'none' }}><div className="text" >Data Science</div></Link>
+          <Link to="/ux_design" style={{ textDecoration: 'none' }}><div className="text" >User Experience Design</div></Link>
+          <Link to="/ios_development" style={{ textDecoration: 'none' }}><div className="text" >iOS Development</div></Link>
+          <Link to="/computer_science" style={{ textDecoration: 'none' }}><div className="text" >Computer Science</div></Link>
+        </div>
+      </DesktopSide>
+      <div>
+        <HeaderContent>
+          <h1>Welcome</h1>
+          <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut 
+            aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in 
+            voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur 
+            sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt 
+            mollit anim id est laborum.
+          </p>
+        </HeaderContent>
+        <MainContent>
+          <div className="row-one">
+              <Link to="/android_development" style={{ textDecoration: 'none' }}><div className="box android">Android Development</div></Link>
+              <Link to="/full_stack" style={{ textDecoration: 'none' }}><div className="box fullstack">Full Stack Web Development</div></Link>
+              <Link to="/data_science" style={{ textDecoration: 'none' }}><div className="box datas">Data Science</div></Link>
+          </div>
+          <div className="row-two">
+              <Link to="/ux_design" style={{ textDecoration: 'none' }}><div className="box uxd">User Experience Design</div></Link>
+              <Link to="/ios_development" style={{ textDecoration: 'none' }}><div className="box ios">iOS Development</div></Link>
+              <Link to="/computer_science" style={{ textDecoration: 'none' }}><div className="box cs">Computer Science</div></Link>
+          </div>
+        </MainContent>
+      </div>
+    </DesktopWelcome>
   );
 }
 }

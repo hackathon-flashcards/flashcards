@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import logo from '../../assets/logo.png';
 import { Link } from 'react-router-dom';
 
+
 const Nav = styled.div`
     display: none;
     justify-content: space-between;
@@ -17,9 +18,14 @@ const Nav = styled.div`
       padding-bottom: 7px;
     }
     .menu {
+      display: none;
       margin-right: 10px;
     }
-    
+    .dropdown {
+      display: none;
+    }
+
+
   @media (max-width: 414px) {
     display: flex;
     justify-content: space-between;
@@ -33,9 +39,12 @@ const Nav = styled.div`
       padding-top: 7px;
       padding-bottom: 7px;
     }
+    .title {
+      display: none;
+    }
     .menu {
+      display: flex;
       margin-right: 10px;
-      // display: none;
     }
     .dropdown {
       display: none;
@@ -108,6 +117,7 @@ class Header extends Component {
   return (
     <Nav>
       <img className="logo" src={logo} alt="logo"/>
+      <div className="title">Lambda Flash Cards</div>
       <div className="menu" ref={this.saveMenuButtonRef} onClick={this.handleClick}>
         <svg width="32" height="32" xmlns="http://www.w3.org/2000/svg">
           <g>
@@ -134,10 +144,10 @@ class Header extends Component {
             </g>
         </svg>
         <Link to="/" style={{ textDecoration: 'none' }}><div className="text" onClick={this.handleClick}>Home</div></Link>
-        <Link to="/android_development" style={{ textDecoration: 'none' }}><div className="text" onClick={this.handleClick}>Android</div></Link>
+        <Link to="/android_development" style={{ textDecoration: 'none' }}><div className="text" onClick={this.handleClick}>Android Development</div></Link>
         <Link to="/full_stack" style={{ textDecoration: 'none' }}><div className="text" onClick={this.handleClick}>Full Stack Web</div></Link>
         <Link to="/data_science" style={{ textDecoration: 'none' }}><div className="text" onClick={this.handleClick}>Data Science</div></Link>
-        <Link to="/ux_design" style={{ textDecoration: 'none' }}><div className="text" onClick={this.handleClick}>User Experience</div></Link>
+        <Link to="/ux_design" style={{ textDecoration: 'none' }}><div className="text" onClick={this.handleClick}>User Experience Design</div></Link>
         <Link to="/ios_development" style={{ textDecoration: 'none' }}><div className="text" onClick={this.handleClick}>iOS Development</div></Link>
         <Link to="/computer_science" style={{ textDecoration: 'none' }}><div className="text" onClick={this.handleClick}>Computer Science</div></Link>
       </div>
