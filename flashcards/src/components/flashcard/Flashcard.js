@@ -10,14 +10,28 @@ import Header from '../header/Header';
 // -------- Styled Components -------------- //
 
 const FlashcardContent = styled.div`
+width: 375px;
+margin: 0 auto;
+display: flex;
+flex-direction: column;
+align-items: center;
+
+
+h2 {
+    font-size: 30px;
+}
+@media (max-width: 414px) {
     width: 93.5%;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
+    align-items: center;
+
 
     h2 {
         font-size: 30px;
     }
+}
 `;
 
 const PreviousSectionButton = styled.div`
