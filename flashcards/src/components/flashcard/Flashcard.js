@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import ReactCardFlip from 'react-card-flip';
 
 // --------- Imported Components ------------ //
@@ -85,6 +85,17 @@ const CardCount = styled.div`
     }
 `;
 
+const BlockerButton = styled.div`
+    width: 100%;
+    height: 100%;
+    background-color: rgb(240, 244, 247, 0.8);
+    pointer-events: none;
+    transition: 0.3s all ease-in-out;
+    display: ${props => (props.show ? 'inline' : 'none')};
+    position: absolute;
+    z-index: 2;
+`;
+
 const NextButton = styled.div`
     margin: 10px 0;
     width: 337px;
@@ -117,6 +128,41 @@ const BackButton = styled(NextButton)`
     }
 `;
 
+const LoadingDiv = styled.div`
+    height: 90vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Lato', sans-serif;
+
+    a {
+        text-decoration: none;
+        font-weight: bold;
+        color: #2f2c4b;
+    }
+`;
+
+const spinning = keyframes`
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+`;
+
+const LoadingIcon = styled.div`
+    border: 10px solid #d4dfe8;
+    border-top: 10px solid #2f2c4b;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: ${spinning} 2s linear infinite;
+`;
+
 // -------- Flashcard Component ------------ //
 
 class Flashcard extends Component {
@@ -124,63 +170,47 @@ class Flashcard extends Component {
         super(props);
         this.state = {
             isFlipped: false,
-            current: 1,
+            current: 0,
             front: '',
             back: '',
-            page: '',
+            page: ''
         };
         this.handleClick = this.handleClick.bind(this);
-        console.log("PROPS??", this.props.data[0])
+        console.log('PROPS??', this.props.data[0]);
     }
 
     handleClick(direction) {
-      console.log("click")
-      if (direction === 'left' && this.state.current !== 0 ) {
-        this.setState({
-          current: this.state.current - 1,
-          front: this.props.data[0].flashcards[this.state.current][0],
-          back: this.props.data[0].flashcards[this.state.current][1],
-          page: this.state.page - 1
-        })
-      } else if (direction === 'left' && this.state.current === 0){
-        this.setState({
-          current: this.props.data[0].flashcards.length - 1,
-          front: this.props.data[0].flashcards[this.state.current][0],
-          back: this.props.data[0].flashcards[this.state.current][1],
-          page: this.props.data[0].flashcards.length - 1
-        })
-      }
+        const { current, page } = this.state;
+        const { flashcards } = this.props.data[0];
 
-      else if (direction === 'right' && this.state.current !== this.props.data[0].flashcards.length) {
-        this.setState({
-          current: this.state.current + 1,
-          front: this.props.data[0].flashcards[this.state.current][0],
-          back: this.props.data[0].flashcards[this.state.current][1],
-          page : this.state.page + 1
-        })
-        console.log('click right. CURRENT:  ', this.state.current)
-      }
-    //   } else if (direction === 'right' && this.state.current === this.props.data[0].flashcards.length - 1){
-    else {    
-    this.setState({
-          current: 0,
-          front: this.props.data[0].flashcards[this.state.current][0],
-          back: this.props.data[0].flashcards[this.state.current][1],
-          page: 1
-        })
-      }
+        if (direction === 'left' && current - 1 !== -1) {
+            this.setState({
+                ...this.state,
+                current: current - 1,
+                front: flashcards[current - 1][0],
+                back: flashcards[current - 1][1],
+                page: page - 1
+            });
+        } else if (direction === 'right' && current + 1 < flashcards.length) {
+            this.setState({
+                ...this.state,
+                current: current + 1,
+                front: flashcards[current + 1][0],
+                back: flashcards[current + 1][1],
+                page: page + 1
+            });
+        }
     }
 
     componentDidMount() {
-      if (this.props.data[0].flashcards.length > 0) {
-      this.setState({
-        current: 1,
-        front: this.props.data[0].flashcards[0][0],
-        back: this.props.data[0].flashcards[0][1],
-        page: 1
-      })
-    }
-    console.log("MOUNT", this.state.current)
+        if (this.props.data[0].flashcards.length > 0) {
+            this.setState({
+                current: 0,
+                front: this.props.data[0].flashcards[0][0],
+                back: this.props.data[0].flashcards[0][1],
+                page: 1
+            });
+        }
     }
 
     changeSide = () => {
@@ -188,75 +218,89 @@ class Flashcard extends Component {
     };
 
     render() {
-      if (this.state.front && this.state.back && this.props.data[0].flashcards.length > 0) {
-        const { isFlipped } = this.state;
+        if (
+            this.state.front &&
+            this.state.back &&
+            this.props.data[0].flashcards.length > 0
+        ) {
+            const { isFlipped, front, back, page } = this.state;
 
-        return (
-            <div>
-                <Header />
-                <FlashcardContent>
-                    <h2>{this.props.data[0].section}</h2>
-                    <PreviousSectionButton>
-                        <i className="fas fa-arrow-left" />
-                        <p>{this.props.data[0].module}</p>
-                    </PreviousSectionButton>
-                    <div onClick={this.changeSide}>
-                        <ReactCardFlip
-                            isFlipped={isFlipped}
-                            flipSpeedBackToFront="2"
-                            flipSpeedFrontToBack="2"
-                        >
-                            <Card key="front">
-                                <CardContent>
-                                    <SideIndicator>
-                                        <p>Front</p>
-                                    </SideIndicator>
-                                    <p>
-                                        {/* Lorem ipsum dolor sit amet, consectetur
-                                        adipiscing elit. Sed nisl est, malesuada
-                                        at euismod et, porta a nunc. Suspendisse
-                                        eget urna dignissim augue fermentum
-                                        varius vitae sed nisi. */}
-                                        {this.state.front}
-                                    </p>
-                                </CardContent>
-                            </Card>
-                            <Card key="back">
-                                <CardContent>
-                                    <SideIndicator>
-                                        <p>Back</p>
-                                    </SideIndicator>
-                                    <p>
-                                        {/* Lorem ipsum dolor sit amet, consectetur
-                                        adipiscing elit. Sed nisl est, malesuada
-                                        at euismod et, porta a nunc. Suspendisse
-                                        eget urna dignissim augue fermentum
-                                        varius vitae sed nisi. */}
-                                        {this.state.back}
-                                    </p>
-                                </CardContent>
-                            </Card>
-                        </ReactCardFlip>
-                    </div>
-                    <CardCount>
+            return (
+                <div>
+                    <Header />
+                    <FlashcardContent>
+                        <h2>{this.props.data[0].section}</h2>
+                        <PreviousSectionButton>
+                            <i className="fas fa-arrow-left" />
+                            <p>{this.props.data[0].module}</p>
+                        </PreviousSectionButton>
+                        <div onClick={this.changeSide}>
+                            <ReactCardFlip
+                                isFlipped={isFlipped}
+                                flipSpeedBackToFront="2"
+                                flipSpeedFrontToBack="2"
+                            >
+                                <Card key="front">
+                                    <CardContent>
+                                        <SideIndicator>
+                                            <p>Front</p>
+                                        </SideIndicator>
+                                        <p>{front}</p>
+                                    </CardContent>
+                                </Card>
+                                <Card key="back">
+                                    <CardContent>
+                                        <SideIndicator>
+                                            <p>Back</p>
+                                        </SideIndicator>
+                                        <p>{back}</p>
+                                    </CardContent>
+                                </Card>
+                            </ReactCardFlip>
+                        </div>
+                        <CardCount>
+                            <p>
+                                <span>{page}</span> of{' '}
+                                <span>
+                                    {this.props.data[0].flashcards.length}
+                                </span>
+                            </p>
+                        </CardCount>
+                        <NextButton onClick={() => this.handleClick('right')}>
+                            <BlockerButton
+                                show={
+                                    page !==
+                                    this.props.data[0].flashcards.length
+                                        ? false
+                                        : true
+                                }
+                            />
+                            <i className="fas fa-arrow-right" />
+                            <p>Next</p>
+                        </NextButton>
+                        <BackButton onClick={() => this.handleClick('left')}>
+                            <BlockerButton show={page !== 1 ? false : true} />
+                            <i className="fas fa-arrow-left" />
+                            <p>Back</p>
+                        </BackButton>
+                    </FlashcardContent>
+                </div>
+            );
+        } else {
+            return (
+                <>
+                    <Header />
+                    <LoadingDiv>
+                        <LoadingIcon />
+                        <h2>Loading...</h2>
                         <p>
-                            <span>{this.state.page}</span> of <span>{this.props.data[0].flashcards.length}</span>
+                            Taking too long? Click <a href="/">here</a> to go
+                            home
                         </p>
-                    </CardCount>
-                    <NextButton onClick={() => this.handleClick('right')}>
-                        <i className="fas fa-arrow-right" />
-                        <p>Next</p>
-                    </NextButton>
-                    <BackButton onClick={() =>  this.handleClick('left')}>
-                        <i className="fas fa-arrow-left" />
-                        <p>Back</p>
-                    </BackButton>
-                </FlashcardContent>
-            </div>
-        );
-      } else {
-        return <p>Loading...</p>
-      }
+                    </LoadingDiv>
+                </>
+            );
+        }
     }
 }
 
