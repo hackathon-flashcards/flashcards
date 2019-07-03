@@ -56,7 +56,7 @@ const DesktopSide = styled.div`
         padding: 0 0px 20px 30px;
     }
     .text:hover {
-        transform: scale(1.05);
+        background: rgb(47, 44, 75);
     }
 
     @media (max-width: 414px) {
@@ -175,7 +175,7 @@ const Card = styled.div`
     align-content: center;
 
     :hover {
-        transform: scale(1.05);
+        transform: scale(1.01);
     }
     .first-row {
         height: 100%;
