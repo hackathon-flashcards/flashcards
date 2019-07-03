@@ -2,15 +2,130 @@ import React, { Component } from 'react';
 import styled, { keyframes } from 'styled-components';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import logo from '../../assets/logo.png';
 
 // -------- Styled Components -------------- //
+const DesktopModule = styled.div`
+  @media (max-width: 1900px) {
+    display: flex;
+    justify-content: space-between;
+    // flex-direction: row;
+    .main-wrap {
+      width: 100%;
+    }
+  }
+  @media (max-width: 414px) {
 
+  }
+`
+const DesktopSide = styled.div`
+  min-width: 350px;
+  height: 100vh;
+  margin: 0 auto;
+  background: rgb(20, 18, 30);
+  box-sizing: border-box;
+  padding: 20px;
+  text-align: center;
+  overflow: hidden;
+ 
+
+  .links {
+    height: 100%;
+    display: block;
+    flex-direction: column;
+    justify-items: center;
+    align-content: stretch;
+    margin-top: 60%;
+  }
+
+  .logo {
+    // width: 100%;
+    display: inline-block;
+    // padding: 20px;
+    box-sizing: border-box;
+  }
+  .title {
+    font-size: 22px;
+    color: #ba112e;
+    display: inline-block;
+    padding-left: 10px;
+    box-sizing: border-box;
+  }
+  .text {
+    font-size: 20px;
+    color: white;
+    text-align: left;
+    padding: 0 0px 20px 30px;
+  }
+
+  @media (max-width: 414px) {
+    display: none;
+  }
+`
 const TopContent = styled.div`
+  padding-left: 20px;
+  padding-right: 10px;
+  box-sizing: border-box;
+  padding-top: 40px;
+  display: flex;
+  flex-direction: column;
+  h1 {
+  }
+  .text-field {
+    justify-self: center;
+    margin: 0 auto;
+  }
+  input {
+      width: 475px;
+      height: 55px;
+      margin-right: 10px;
+      margin: 0 auto;
+      padding: 15px;
+      border-radius: 5px;
+      font-size: 18px;
+      border: transparent;
+      box-sizing: border-box;
+      position: relative;
+      justify-self: center;
+
+  }
+  input:focus {
+      outline: none;
+  }
+  input::placeholder {
+      color: rgb(180, 180, 180);
+  }
+  .icon {
+      // position: absolute;
+      // right: 50px;
+      transform: translate(-40px, 10px);
+      margin-right: 20px;
+      margin-top: 10px;
+  }
+
+  @media (max-width: 414px) {
     padding-left: 10px;
     padding-right: 10px;
     box-sizing: border-box;
 
     h1 {
+      
+    }
+    .text-field {
+      justify-self: center;
+      margin: 0;
+    }
+    input {
+      width: 100%;
+      height: 55px;
+      margin-right: 10px;
+      margin: 0 auto;
+      padding: 15px;
+      border-radius: 5px;
+      font-size: 18px;
+      border: transparent;
+      box-sizing : border-box;
+      position: relative;
     }
 
     div {
@@ -52,19 +167,12 @@ const TopContent = styled.div`
             cursor: pointer;
         }
     }
-
-    @media (max-width: 414px) {
-        padding-left: 10px;
-        padding-right: 10px;
-        box-sizing: border-box;
-
-        div {
-            width: 100%;
-
-            input {
-                width: 90%;
-            }
-        }
+    .icon {
+      position: absolute;
+      right: 0;
+      margin-right: 20px;
+      margin-top: 10px;
+      transform: translate(0px, 0px);
     }
 `;
 
@@ -72,35 +180,82 @@ const MainContent = styled.div`
     a {
         color: black;
     }
+    display: flex;
+    flex-wrap: wrap;
 
     @media (max-width: 414px) {
+      display: block;
+      flex-wrap: none;
     }
 `;
 
 const Card = styled.div`
+  background: rgb(214, 223, 231);
+  margin: 20px 70px 20px 70px;
+  border-radius: 5px;
+  // padding: 10px 0 10px 0;
+  width: 320px;
+  height: 160px;
+  // padding: 10px;
+  // display: flex;
+  // justify-content: space-between;
+  // align-content: center;
+
+
+
+  :hover {
+    transform: scale(1.01);
+  }
+  .first-row {
+      height: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-content: middle;
+      margin: 0 auto;
+      padding: 0 10px 15px 10px;
+      font-weight: bold;
+      top: 50%;
+
+      .number {
+          font-size: 16px;
+          padding-top: 0px;
+          color: #ba112e;
+          margin-top: 70px;
+      }
+      .text {
+        margin-top: 70px;
+      }
+  }
+  .p {
+      padding: 10px;
+      margin: 0px;
+      margin-top: 20%;
+  }
+
+  @media (max-width: 414px) {
     background: rgb(214, 223, 231);
     margin: 20px 10px 20px 10px;
     border-radius: 5px;
     padding: 10px 0 10px 0;
-    max-width: 475px;
-    :hover {
-        transform: scale(1.1);
-    }
+    width: auto;
+    height: 100px;
+
+
     .first-row {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 0 10px 15px 10px;
-        font-weight: bold;
-        p {
-            margin: 0;
-            font-size: 20px;
-        }
-        .number {
-            font-size: 16px;
-            padding-top: 3px;
-            color: #ba112e;
-        }
+      display: flex;
+      justify-content: space-between;
+      align-content: center;
+      margin: 0 auto;
+      padding: 0 10px 15px 10px;
+
+      .text {
+        margin-top: 40px;
+      }
+      .number {
+        font-size: 16px;
+        color: #BA112E;
+        margin-top: 40px;
+      }
     }
     .p {
         padding: 10px;
@@ -330,10 +485,26 @@ class Module extends Component {
     render() {
         if (this.state.flashcards.length > 0 && this.state.section.length > 0) {
             return (
-                <div>
+              <DesktopModule>
+                <DesktopSide>
+                  <div>
+                    <img className="logo" src={logo} alt="logo"/>
+                    <div className="title">Lambda Flash Cards</div>
+                  </div>
+                  <div className="links">
+                    <Link to="/" style={{ textDecoration: 'none' }}><div className="text" >Home</div></Link>
+                    <Link to="/android_development" style={{ textDecoration: 'none' }}><div className="text" >Android Development</div></Link>
+                    <Link to="/full_stack" style={{ textDecoration: 'none' }}><div className="text" >Full Stack Web</div></Link>
+                    <Link to="/data_science" style={{ textDecoration: 'none' }}><div className="text" >Data Science</div></Link>
+                    <Link to="/ux_design" style={{ textDecoration: 'none' }}><div className="text" >User Experience Design</div></Link>
+                    <Link to="/ios_development" style={{ textDecoration: 'none' }}><div className="text" >iOS Development</div></Link>
+                    <Link to="/computer_science" style={{ textDecoration: 'none' }}><div className="text" >Computer Science</div></Link>
+                  </div>
+                </DesktopSide>
+                <div className="main-wrap">
                     <TopContent>
                         <h1>{this.props.module}</h1>
-                        <div>
+                        <div className="text-field">
                             <input
                                 type="text"
                                 name="searchText"
@@ -390,6 +561,7 @@ class Module extends Component {
                             ))}
                     </MainContent>
                 </div>
+            </DesktopModule>
             );
         } else {
             return (

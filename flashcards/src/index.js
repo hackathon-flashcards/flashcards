@@ -11,6 +11,7 @@ const Container = styled.div `
   left: 0;
   right: 0;
   position: absolute;
+  // overflow: hidden;
 `;
 
 ReactDOM.render(<Container><App /></Container>, document.getElementById('root'));
