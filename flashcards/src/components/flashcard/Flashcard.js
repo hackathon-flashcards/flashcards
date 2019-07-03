@@ -54,7 +54,7 @@ const PreviousSectionButton = styled.div`
 
 const Card = styled.div`
     margin-top: 25px;
-    width: 100%;
+    width: 375px;
     height: 308px;
     background-color: #ffffff;
     border-radius: 5px;

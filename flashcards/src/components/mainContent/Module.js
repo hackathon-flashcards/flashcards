@@ -12,7 +12,7 @@ const TopContent = styled.div`
     h1 {
     }
     input {
-        width: 100%;
+        width: 475px;
         height: 55px;
         margin-right: 10px;
         margin: 0 auto;
@@ -51,13 +51,18 @@ const Card = styled.div`
     margin: 20px 10px 20px 10px;
     border-radius: 5px;
     padding: 10px 0 10px 0;
-    max-width: 375px;
+    max-width: 475px;
+
+    :hover {
+      transform: scale(1.1);
+    }
 
     .first-row {
         display: flex;
         justify-content: space-between;
         align-items: center;
         padding: 0 10px 15px 10px;
+        font-weight: bold;
         p {
             margin: 0;
             font-size: 20px;
@@ -309,8 +314,7 @@ class Module extends Component {
                                         </p>
                                     </div>
                                     <p className="p">
-                                        World's shortest summary about this
-                                        topic here.
+                                       
                                     </p>
                                 </Card>
                             </Link>
