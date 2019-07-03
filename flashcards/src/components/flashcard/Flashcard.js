@@ -54,7 +54,7 @@ const PreviousSectionButton = styled.div`
 
 const Card = styled.div`
     margin-top: 25px;
-    width: 100%;
+    width: 375px;
     height: 308px;
     background-color: #ffffff;
     border-radius: 5px;
@@ -120,6 +120,7 @@ const NextButton = styled.div`
     display: flex;
     justify-content: center;
     position: relative;
+    cursor: pointer;
 
     .fas {
         color: #ffffff;
@@ -136,6 +137,7 @@ const NextButton = styled.div`
 
 const BackButton = styled(NextButton)`
     flex-direction: row-reverse;
+    cursor: pointer;
 
     .fas {
         right: auto;

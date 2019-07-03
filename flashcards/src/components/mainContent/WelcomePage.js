@@ -40,20 +40,38 @@ text-align: center;
 .android {
   background: rgb(20, 18, 30);
 }
+.android:hover {
+  transform: scale(1.1);
+}
 .fullstack {
   background: rgb(46, 45, 73);
+}
+.fullstack:hover {
+  transform: scale(1.1);
 }
 .datas {
   background: rgb(95, 180, 225);
 }
+.datas:hover {
+  transform: scale(1.1);
+}
 .uxd {
   background: rgb(20, 18, 30);
+}
+.uxd:hover {
+  transform: scale(1.1);
 }
 .ios {
   background: rgb(26, 62, 116);
 }
+.ios:hover {
+  transform: scale(1.1);
+}
 .cs {
   background: rgb(47, 98, 169);
+}
+.cs:hover {
+  transform: scale(1.1);
 }
 
   @media (max-width: 414px) {
