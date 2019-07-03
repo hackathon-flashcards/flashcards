@@ -5,7 +5,7 @@ import axios from 'axios';
 import logo from '../../assets/logo.png';
 
 const DesktopWelcome = styled.div`
-  @media (max-width: 1900px) {
+  @media (max-width: 2500px) {
     display: flex;
     justify-content: space-between;
     // flex-direction: row;
@@ -59,7 +59,8 @@ const DesktopSide = styled.div`
     padding: 0 0px 20px 30px;
   }
   .text:hover{
-    transform: scale(1.05);
+    
+    background: rgb(47, 44, 75);
    }
 
   @media (max-width: 414px) {
@@ -67,7 +68,7 @@ const DesktopSide = styled.div`
   }
 `
 const HeaderContent = styled.div`
-  @media (max-width: 1800px) {
+  @media (max-width: 2500px) {
     padding-left: 35px;
     padding-right: 20px;
     padding-top: 40px;
@@ -88,7 +89,7 @@ const HeaderContent = styled.div`
 `;
 
 const MainContent = styled.div`
-@media (max-width: 1800px) {
+@media (max-width: 2500px) {
   padding-top: 20px;
   text-align: center;
   display: flex;
@@ -120,37 +121,37 @@ const MainContent = styled.div`
     background: rgb(20, 18, 31);
   }
   .android:hover {
-    transform: scale(1.05);
+    transform: scale(1.01);
   }
   .fullstack {
     background: rgb(47, 44, 75);
   }
   .fullstack:hover {
-    transform: scale(1.05);
+    transform: scale(1.01);
   }
   .datas {
     background: rgb(59, 181, 230);
   }
   .datas:hover {
-    transform: scale(1.05);
+    transform: scale(1.01);
   }
   .uxd {
     background: rgb(20, 18, 31);
   }
   .uxd:hover {
-    transform: scale(1.05);
+    transform: scale(1.01);
   }
   .ios {
     background: rgb(12, 61, 120);
   }
   .ios:hover {
-    transform: scale(1.05);
+    transform: scale(1.01);
   }
   .cs {
     background: rgb(47, 98, 169);
   }
   .cs:hover {
-    transform: scale(1.05);
+    transform: scale(1.01);
   }
 }
   @media (max-width: 414px) {
