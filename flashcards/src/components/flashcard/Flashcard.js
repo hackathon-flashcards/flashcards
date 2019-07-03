@@ -63,6 +63,53 @@ const DesktopSide = styled.div`
     text-align: left;
     padding: 0 0px 20px 30px;
   }
+  .text:hover{
+    transform: scale(1.05);
+   }
+
+   @media (max-width: 1200px){
+    min-width: 300px;
+    height: 100vh;
+    margin: 0 auto;
+    background: rgb(20, 18, 30);
+    box-sizing: border-box;
+    padding: 20px;
+    text-align: center;
+    overflow: hidden;
+   
+  
+    .links {
+      height: 100%;
+      display: block;
+      flex-direction: column;
+      justify-items: center;
+      align-content: stretch;
+      margin-top: 60%;
+    }
+  
+    .logo {
+      // width: 100%;
+      display: inline-block;
+      // padding: 20px;
+      box-sizing: border-box;
+    }
+    .title {
+      font-size: 22px;
+      color: #ba112e;
+      display: inline-block;
+      padding-left: 10px;
+      box-sizing: border-box;
+    }
+    .text {
+      font-size: 20px;
+      color: white;
+      text-align: left;
+      padding: 0 0px 20px 30px;
+    }
+    .text:hover{
+      transform: scale(1.05);
+     }
+   }
 
   @media (max-width: 414px) {
     display: none;
@@ -70,6 +117,11 @@ const DesktopSide = styled.div`
 `
 
 const FlashcardContent = styled.div`
+    width: 375px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;   
 
    .titlewrap {
      width: 100%;
@@ -83,12 +135,7 @@ const FlashcardContent = styled.div`
       display: flex;
       flex-direction: row-reverse;
     }
-    width: 375px;
-    width: 100%;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    
 
     h2 {
         font-size: 30px;
@@ -140,11 +187,18 @@ const PreviousSectionButton = styled.div`
 const Card = styled.div`
 @media (max-width: 1800px) {
   margin-top: 45px;
-  width: 875px;
+  width: 500px;
   height: 408px;
   background-color: #ffffff;
   border-radius: 5px;
 }
+@media (max-width: 1200px) {
+    margin-top: 45px;
+    width: 375px;
+    height: 308px;
+    background-color: #ffffff;
+    border-radius: 5px;
+  }
 
 @media (max-width: 414px) {
     margin-top: 25px;
@@ -237,7 +291,7 @@ const BlockerButton = styled.div`
 `;
 
 const NextButton = styled.div`
-    margin: 10px 0;
+    margin: 20px 30px 20px 30px;    
     width: 337px;
     height: 40px;
     background-color: #2f2c4b;
@@ -258,10 +312,34 @@ const NextButton = styled.div`
         font-size: 14px;
         color: #ffffff;
     }
-    @media (max-width: 1800px) {
+    @media (max-width: 1200px) {
+        margin: 20px 30px 20px 30px;
+        // margin-bottom: 20px;
+        width: 250px;
+        height: 40px;
+        background-color: #2f2c4b;
+        border-radius: 5px;
+        display: flex;
+        justify-content: center;
+        position: relative;
+        cursor: pointer;
+    
+        .fas {
+            color: #ffffff;
+            position: absolute;
+            right: 10px;
+            top: 13px;
+        }
+    
+        p {
+            font-size: 14px;
+            color: #ffffff;
+        }
+
+    @media (max-width: 414px) {
       margin: 20px 30px 20px 30px;
       // margin-bottom: 20px;
-      width: 337px;
+      width: 150px;
       height: 40px;
       background-color: #2f2c4b;
       border-radius: 5px;

@@ -12,6 +12,7 @@ const Nav = styled.div`
     margin: 0 auto;
     color: white;
     background-color: rgb(20, 18, 30);
+   
     .logo {
       margin-left: 10px;
       padding-top: 7px;
@@ -20,7 +21,9 @@ const Nav = styled.div`
     .menu {
       display: none;
       margin-right: 10px;
+      
     }
+    
     .dropdown {
       display: none;
     }

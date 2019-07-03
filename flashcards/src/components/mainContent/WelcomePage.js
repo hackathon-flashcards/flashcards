@@ -58,6 +58,9 @@ const DesktopSide = styled.div`
     text-align: left;
     padding: 0 0px 20px 30px;
   }
+  .text:hover{
+    transform: scale(1.05);
+   }
 
   @media (max-width: 414px) {
     display: none;
@@ -114,40 +117,40 @@ const MainContent = styled.div`
     margin: 10px 10px 10px 10px;
   }
   .android {
-    background: rgb(20, 18, 30);
+    background: rgb(20, 18, 31);
   }
   .android:hover {
-    transform: scale(1.01);
+    transform: scale(1.05);
   }
   .fullstack {
-    background: rgb(46, 45, 73);
+    background: rgb(47, 44, 75);
   }
   .fullstack:hover {
-    transform: scale(1.01);
+    transform: scale(1.05);
   }
   .datas {
-    background: rgb(95, 180, 225);
+    background: rgb(59, 181, 230);
   }
   .datas:hover {
-    transform: scale(1.01);
+    transform: scale(1.05);
   }
   .uxd {
-    background: rgb(20, 18, 30);
+    background: rgb(20, 18, 31);
   }
   .uxd:hover {
-    transform: scale(1.01);
+    transform: scale(1.05);
   }
   .ios {
-    background: rgb(26, 62, 116);
+    background: rgb(12, 61, 120);
   }
   .ios:hover {
-    transform: scale(1.01);
+    transform: scale(1.05);
   }
   .cs {
     background: rgb(47, 98, 169);
   }
   .cs:hover {
-    transform: scale(1.01);
+    transform: scale(1.05);
   }
 }
   @media (max-width: 414px) {
@@ -258,12 +261,8 @@ class WelcomePage extends Component {
       </DesktopSide>
       <div>
         <HeaderContent>
-          <h1>Welcome</h1>
-          <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut 
-            aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in 
-            voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur 
-            sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt 
-            mollit anim id est laborum.
+          <h1>Lambda Flash Cards</h1>
+          <p>
           </p>
         </HeaderContent>
         <MainContent>
