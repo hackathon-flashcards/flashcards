@@ -120,6 +120,7 @@ const NextButton = styled.div`
     display: flex;
     justify-content: center;
     position: relative;
+    cursor: pointer;
 
     .fas {
         color: #ffffff;
@@ -136,6 +137,7 @@ const NextButton = styled.div`
 
 const BackButton = styled(NextButton)`
     flex-direction: row-reverse;
+    cursor: pointer;
 
     .fas {
         right: auto;
