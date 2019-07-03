@@ -44,12 +44,26 @@ const TopContent = styled.div`
             top: 18%;
             margin-right: 20px;
             margin-top: 10px;
-            opacity: 0.2;
+            color: rgb(180, 180, 180);
         }
 
         .far {
-            opacity: 1;
+            color: #000000;
             cursor: pointer;
+        }
+    }
+
+    @media (max-width: 414px) {
+        padding-left: 10px;
+        padding-right: 10px;
+        box-sizing: border-box;
+
+        div {
+            width: 100%;
+
+            input {
+                width: 90%;
+            }
         }
     }
 `;
@@ -69,11 +83,9 @@ const Card = styled.div`
     border-radius: 5px;
     padding: 10px 0 10px 0;
     max-width: 475px;
-
     :hover {
         transform: scale(1.1);
     }
-
     .first-row {
         display: flex;
         justify-content: space-between;
@@ -93,6 +105,38 @@ const Card = styled.div`
     .p {
         padding: 10px;
         margin: 0px;
+    }
+
+    @media (max-width: 414px) {
+        background: rgb(214, 223, 231);
+        margin: 20px 10px 20px 10px;
+        border-radius: 5px;
+        padding: 10px 0 10px 0;
+        max-width: 475px;
+
+        :hover {
+            transform: scale(1.1);
+        }
+
+        .first-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 10px 15px 10px;
+            p {
+                margin: 0;
+                font-size: 20px;
+            }
+            .number {
+                font-size: 16px;
+                padding-top: 3px;
+                color: #ba112e;
+            }
+        }
+        .p {
+            padding: 10px;
+            margin: 0px;
+        }
     }
 `;
 
