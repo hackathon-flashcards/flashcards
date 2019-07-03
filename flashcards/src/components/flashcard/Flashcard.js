@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styled, { keyframes } from 'styled-components';
 import ReactCardFlip from 'react-card-flip';
 import { Link } from 'react-router-dom';
+import logo from '../../assets/logo.png';
 
 // --------- Imported Components ------------ //
 
@@ -9,8 +10,81 @@ import Header from '../header/Header';
 
 // -------- Styled Components -------------- //
 
+const DesktopFlashcard = styled.div`
+  @media (max-width: 1900px) {
+    display: flex;
+    justify-content: space-between;
+    // flex-direction: row;
+    .wrap {
+      width: 100%;
+      margin: 0 auto;
+    }
+  }
+  @media (max-width: 414px) {
+
+  }
+`
+const DesktopSide = styled.div`
+  min-width: 350px;
+  height: 100vh;
+  margin: 0 auto;
+  background: rgb(20, 18, 30);
+  box-sizing: border-box;
+  padding: 20px;
+  text-align: center;
+  overflow: hidden;
+ 
+
+  .links {
+    height: 100%;
+    display: block;
+    flex-direction: column;
+    justify-items: center;
+    align-content: stretch;
+    margin-top: 60%;
+  }
+
+  .logo {
+    // width: 100%;
+    display: inline-block;
+    // padding: 20px;
+    box-sizing: border-box;
+  }
+  .title {
+    font-size: 22px;
+    color: #ba112e;
+    display: inline-block;
+    padding-left: 10px;
+    box-sizing: border-box;
+  }
+  .text {
+    font-size: 20px;
+    color: white;
+    text-align: left;
+    padding: 0 0px 20px 30px;
+  }
+
+  @media (max-width: 414px) {
+    display: none;
+  }
+`
+
 const FlashcardContent = styled.div`
+
+   .titlewrap {
+     width: 100%;
+     margin: 0 auto;
+     display: flex;
+     flex-direction: column;
+     justify-items: flex-start;
+     padding-left: 40px;
+   }
+    .buttons {
+      display: flex;
+      flex-direction: row-reverse;
+    }
     width: 375px;
+    width: 100%;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -18,6 +92,8 @@ const FlashcardContent = styled.div`
 
     h2 {
         font-size: 30px;
+        padding-top: 40px;
+        left: 0;
     }
     @media (max-width: 414px) {
         width: 93.5%;
@@ -28,6 +104,15 @@ const FlashcardContent = styled.div`
 
         h2 {
             font-size: 30px;
+        }
+        .buttons {
+          display: block;
+        }
+        .titlewrap {
+          width: auto;
+          margin: 0;
+          display: block;
+
         }
     }
 `;
@@ -53,11 +138,21 @@ const PreviousSectionButton = styled.div`
 `;
 
 const Card = styled.div`
+@media (max-width: 1800px) {
+  margin-top: 45px;
+  width: 875px;
+  height: 408px;
+  background-color: #ffffff;
+  border-radius: 5px;
+}
+
+@media (max-width: 414px) {
     margin-top: 25px;
     width: 375px;
     height: 308px;
     background-color: #ffffff;
     border-radius: 5px;
+}
 `;
 
 const CardContent = styled.div`
@@ -70,9 +165,24 @@ const CardContent = styled.div`
     position: relative;
 
     p {
-        font-size: 16px;
+        font-size: 18px;
         line-height: 1.5;
         width: 90%;
+    }
+    @media (max-size: 414px) {
+      width: 100%;
+      height: 308px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+  
+      p {
+          font-size: 16px;
+          line-height: 1.5;
+          width: 90%;
+      }
     }
 `;
 
@@ -89,6 +199,7 @@ const SideIndicator = styled.div`
 `;
 
 const CardCount = styled.div`
+ @media (max-size: 1800px) {
     width: 100%;
     margin-top: 12px;
     display: flex;
@@ -97,6 +208,20 @@ const CardCount = styled.div`
     span {
         margin: 0 2px;
         font-weight: bold;
+        padding: 20px;
+    }
+  }
+    @media (max-size: 414px) {
+      width: 100%;
+      margin-top: 12px;
+      display: flex;
+      justify-content: center;
+  
+      span {
+          margin: 0 2px;
+          font-weight: bold;
+          padding: 0px;
+      }
     }
 `;
 
@@ -132,6 +257,30 @@ const NextButton = styled.div`
     p {
         font-size: 14px;
         color: #ffffff;
+    }
+    @media (max-width: 1800px) {
+      margin: 20px 30px 20px 30px;
+      // margin-bottom: 20px;
+      width: 337px;
+      height: 40px;
+      background-color: #2f2c4b;
+      border-radius: 5px;
+      display: flex;
+      justify-content: center;
+      position: relative;
+      cursor: pointer;
+  
+      .fas {
+          color: #ffffff;
+          position: absolute;
+          right: 10px;
+          top: 13px;
+      }
+  
+      p {
+          font-size: 14px;
+          color: #ffffff;
+      }
     }
 `;
 
@@ -243,9 +392,27 @@ class Flashcard extends Component {
             const { isFlipped, front, back, page } = this.state;
 
             return (
-                <div>
+                <DesktopFlashcard>
+                <DesktopSide>
+                  <div>
+                    <img className="logo" src={logo} alt="logo"/>
+                    <div className="title">Lambda Flash Cards</div>
+                  </div>
+                  <div className="links">
+                    <Link to="/" style={{ textDecoration: 'none' }}><div className="text" >Home</div></Link>
+                    <Link to="/android_development" style={{ textDecoration: 'none' }}><div className="text" >Android Development</div></Link>
+                    <Link to="/full_stack" style={{ textDecoration: 'none' }}><div className="text" >Full Stack Web</div></Link>
+                    <Link to="/data_science" style={{ textDecoration: 'none' }}><div className="text" >Data Science</div></Link>
+                    <Link to="/ux_design" style={{ textDecoration: 'none' }}><div className="text" >User Experience Design</div></Link>
+                    <Link to="/ios_development" style={{ textDecoration: 'none' }}><div className="text" >iOS Development</div></Link>
+                    <Link to="/computer_science" style={{ textDecoration: 'none' }}><div className="text" >Computer Science</div></Link>
+                  </div>
+                </DesktopSide>
+                <div className="wrap">
                     <Header />
+            
                     <FlashcardContent>
+                        <div className="titlewrap">
                         <h2>{this.props.data[0].section}</h2>
                         <Link
                             to={`/${this.props.data[0].path}`}
@@ -256,7 +423,9 @@ class Flashcard extends Component {
                                 <p>{this.props.data[0].module}</p>
                             </PreviousSectionButton>
                         </Link>
+                        </div>
                         <div onClick={this.changeSide}>
+                      
                             <ReactCardFlip
                                 isFlipped={isFlipped}
                                 flipSpeedBackToFront="2"
@@ -278,7 +447,9 @@ class Flashcard extends Component {
                                         <p>{back}</p>
                                     </CardContent>
                                 </Card>
+      
                             </ReactCardFlip>
+                           
                         </div>
                         <CardCount>
                             <p>
@@ -288,25 +459,29 @@ class Flashcard extends Component {
                                 </span>
                             </p>
                         </CardCount>
-                        <NextButton onClick={() => this.handleClick('right')}>
-                            <BlockerButton
-                                show={
-                                    page !==
-                                    this.props.data[0].flashcards.length
-                                        ? false
-                                        : true
-                                }
-                            />
-                            <i className="fas fa-arrow-right" />
-                            <p>Next</p>
-                        </NextButton>
-                        <BackButton onClick={() => this.handleClick('left')}>
-                            <BlockerButton show={page !== 1 ? false : true} />
-                            <i className="fas fa-arrow-left" />
-                            <p>Back</p>
-                        </BackButton>
+                        <div className="buttons">
+                          <NextButton onClick={() => this.handleClick('right')}>
+                              <BlockerButton
+                                  show={
+                                      page !==
+                                      this.props.data[0].flashcards.length
+                                          ? false
+                                          : true
+                                  }
+                              />
+                              <i className="fas fa-arrow-right" />
+                              <p>Next</p>
+                          </NextButton>
+                          <BackButton onClick={() => this.handleClick('left')}>
+                              <BlockerButton show={page !== 1 ? false : true} />
+                              <i className="fas fa-arrow-left" />
+                              <p>Back</p>
+                          </BackButton>
+                        </div>
                     </FlashcardContent>
+        
                 </div>
+            </DesktopFlashcard>
             );
         } else {
             return (
