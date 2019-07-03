@@ -25,6 +25,19 @@ const MainContent = styled.div`
 padding-top: 30px;
 text-align: center;
 
+.boxesall {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+}
+.boxestop {
+  display: flex;
+  justify-content: space-evenly;
+
+}
+.boxesbottom {
+  display: flex;
+  justify-content: space-evenly;
 
 }
 .box {
