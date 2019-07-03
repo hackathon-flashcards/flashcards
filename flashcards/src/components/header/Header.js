@@ -4,7 +4,7 @@ import logo from '../../assets/logo.png';
 import { Link } from 'react-router-dom';
 
 const Nav = styled.div`
-display: flex;
+    display: none;
     justify-content: space-between;
     align-items: center;
     width: 100%;
@@ -134,7 +134,7 @@ class Header extends Component {
             </g>
         </svg>
         <Link to="/" style={{ textDecoration: 'none' }}><div className="text" onClick={this.handleClick}>Home</div></Link>
-        <Link to="/android_development" style={{ textDecoration: 'none' }}><div className="text" onClick={this.handleClick}>Androind</div></Link>
+        <Link to="/android_development" style={{ textDecoration: 'none' }}><div className="text" onClick={this.handleClick}>Android</div></Link>
         <Link to="/full_stack" style={{ textDecoration: 'none' }}><div className="text" onClick={this.handleClick}>Full Stack Web</div></Link>
         <Link to="/data_science" style={{ textDecoration: 'none' }}><div className="text" onClick={this.handleClick}>Data Science</div></Link>
         <Link to="/ux_design" style={{ textDecoration: 'none' }}><div className="text" onClick={this.handleClick}>User Experience</div></Link>
