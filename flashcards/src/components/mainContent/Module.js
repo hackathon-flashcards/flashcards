@@ -6,35 +6,68 @@ import { Link } from 'react-router-dom';
 // -------- Styled Components -------------- //
 
 const TopContent = styled.div`
+  padding-left: 10px;
+  padding-right: 10px;
+  box-sizing: border-box;
+  h1 {
+  }
+  input {
+      width: 475px;
+      height: 55px;
+      margin-right: 10px;
+      margin: 0 auto;
+      padding: 15px;
+      border-radius: 5px;
+      font-size: 18px;
+      border: transparent;
+      box-sizing: border-box;
+      position: relative;
+  }
+  input:focus {
+      outline: none;
+  }
+  input::placeholder {
+      color: rgb(180, 180, 180);
+  }
+  .icon {
+      position: absolute;
+      right: 0;
+      margin-right: 20px;
+      margin-top: 10px;
+  }
+
+  @media (max-width: 414px) {
     padding-left: 10px;
     padding-right: 10px;
-    box-sizing: border-box;
+    box-sizing : border-box;
     h1 {
+      
     }
     input {
-        width: 475px;
-        height: 55px;
-        margin-right: 10px;
-        margin: 0 auto;
-        padding: 15px;
-        border-radius: 5px;
-        font-size: 18px;
-        border: transparent;
-        box-sizing: border-box;
-        position: relative;
+      width: 100%;
+      height: 55px;
+      margin-right: 10px;
+      margin: 0 auto;
+      padding: 15px;
+      border-radius: 5px;
+      font-size: 18px;
+      border: transparent;
+      box-sizing : border-box;
+      position: relative;
     }
-    input:focus {
-        outline: none;
+    input:focus{
+      outline: none;
     }
     input::placeholder {
-        color: rgb(180, 180, 180);
+      color: rgb(180, 180, 180);
     }
     .icon {
-        position: absolute;
-        right: 0;
-        margin-right: 20px;
-        margin-top: 10px;
+      position: absolute;
+      right: 0;
+      margin-right: 20px;
+      margin-top: 10px;
     }
+  }
 `;
 
 const MainContent = styled.div`
@@ -47,37 +80,61 @@ const MainContent = styled.div`
 `;
 
 const Card = styled.div`
+  background: rgb(214, 223, 231);
+  margin: 20px 10px 20px 10px;
+  border-radius: 5px;
+  padding: 10px 0 10px 0;
+  max-width: 475px;
+  :hover {
+    transform: scale(1.1);
+  }
+  .first-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 10px 15px 10px;
+      font-weight: bold;
+      p {
+          margin: 0;
+          font-size: 20px;
+      }
+      .number {
+          font-size: 16px;
+          padding-top: 3px;
+          color: #ba112e;
+      }
+  }
+  .p {
+      padding: 10px;
+      margin: 0px;
+  }
+
+  @media (max-width: 414px) {
     background: rgb(214, 223, 231);
     margin: 20px 10px 20px 10px;
     border-radius: 5px;
     padding: 10px 0 10px 0;
-    max-width: 475px;
-
-    :hover {
-      transform: scale(1.1);
-    }
-
     .first-row {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 0 10px 15px 10px;
-        font-weight: bold;
-        p {
-            margin: 0;
-            font-size: 20px;
-        }
-        .number {
-            font-size: 16px;
-            padding-top: 3px;
-            color: #ba112e;
-        }
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 10px 15px 10px;
+      p {
+        margin: 0;
+        font-size: 20px;
+      }
+      .number {
+        font-size: 16px;
+        padding-top: 3px;
+        color: #BA112E;
+      }
     }
     .p {
-        padding: 10px;
-        margin: 0px;
+      padding: 10px;
+      margin: 0px;
     }
-`;
+  }
+`
 
 const LoadingDiv = styled.div`
     height: 90vh;
@@ -319,7 +376,7 @@ class Module extends Component {
                                 </Card>
                             </Link>
                         ))}
-                        ;
+                        
                     </MainContent>
                 </div>
             );
