@@ -52,14 +52,15 @@ const TopContent = styled.div`
         }
     }
 
-    @media (max-width: 500px) {
+    @media (max-width: 650px) {
         padding-left: 1rem;
         padding-right: 1rem;
 
         div {
-            width: 100%;
+            width: 77.5%;
             height: 40px;
             padding: 0.5rem 1rem;
+            margin: 0 auto;
 
             input {
                 width: 90%;
@@ -76,17 +77,22 @@ const TopContent = styled.div`
 `;
 
 const MainContent = styled.div`
+    /* width: 100%; */
+
     a {
         color: black;
     }
 
-    @media (max-width: 500) {
+    @media (max-width: 650px) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 `;
 
 const Card = styled.div`
     background: rgb(214, 223, 231);
-    margin: 2rem 1rem;
+    margin: 1rem 0;
     border-radius: 5px;
     padding: 1rem 0;
     max-width: 475px;
@@ -110,8 +116,9 @@ const Card = styled.div`
         }
     }
 
-    @media (max-width: 500px) {
+    @media (max-width: 650px) {
         height: 7rem;
+        width: 90vw;
 
         .first-row {
             height: 100%;
@@ -143,6 +150,12 @@ const LoadingDiv = styled.div`
     align-items: center;
     font-family: 'Lato', sans-serif;
 
+    a {
+        text-decoration: none;
+        font-weight: bold;
+        color: #2f2c4b;
+    }
+
     h2 {
         font-size: 1.8rem;
         font-weight: bold;
@@ -169,8 +182,8 @@ const LoadingIcon = styled.div`
     border: 1rem solid #d4dfe8;
     border-top: 1rem solid #2f2c4b;
     border-radius: 50%;
-    width: 50px;
-    height: 50px;
+    width: 75px;
+    height: 75px;
     animation: ${spinning} 2s linear infinite;
 `;
 

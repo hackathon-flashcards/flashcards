@@ -20,7 +20,7 @@ const FlashcardContent = styled.div`
         margin-top: 2rem;
     }
 
-    @media (max-width: 500px) {
+    @media (max-width: 650px) {
         width: 93.5%;
     }
 `;
@@ -54,7 +54,7 @@ const Card = styled.div`
     background-color: #ffffff;
     border-radius: 5px;
 
-    @media (max-width: 500px) {
+    @media (max-width: 650px) {
         width: 100%;
     }
 `;
@@ -112,7 +112,7 @@ const BlockerButton = styled.div`
 
 const NextButton = styled.div`
     margin: 10px 0;
-    width: 337px;
+    /* width: 337px; */
     height: 40px;
     background-color: #2f2c4b;
     border-radius: 5px;
@@ -121,6 +121,7 @@ const NextButton = styled.div`
     justify-content: center;
     position: relative;
     cursor: pointer;
+    user-select: none;
 
     .fas {
         color: #ffffff;
@@ -159,6 +160,17 @@ const LoadingDiv = styled.div`
         font-weight: bold;
         color: #2f2c4b;
     }
+
+    h2 {
+        font-size: 1.8rem;
+        font-weight: bold;
+        margin: 2rem 0;
+    }
+
+    p {
+        font-size: 1.6rem;
+        margin: 1.6rem 0;
+    }
 `;
 
 const spinning = keyframes`
@@ -175,8 +187,8 @@ const LoadingIcon = styled.div`
     border: 10px solid #d4dfe8;
     border-top: 10px solid #2f2c4b;
     border-radius: 50%;
-    width: 50px;
-    height: 50px;
+    width: 75px;
+    height: 75px;
     animation: ${spinning} 2s linear infinite;
 `;
 

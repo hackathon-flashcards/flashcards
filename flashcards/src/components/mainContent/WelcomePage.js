@@ -20,7 +20,7 @@ const HeaderContent = styled.div`
         line-height: 1.5;
     }
 
-    @media (max-width: 500px) {
+    @media (max-width: 650px) {
         padding-left: 1rem;
         padding-right: 1rem;
 
