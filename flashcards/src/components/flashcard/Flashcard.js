@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styled, { keyframes } from 'styled-components';
 import ReactCardFlip from 'react-card-flip';
+import { Link } from 'react-router-dom';
 
 // --------- Imported Components ------------ //
 
@@ -9,19 +10,31 @@ import Header from '../header/Header';
 // -------- Styled Components -------------- //
 
 const FlashcardContent = styled.div`
-    width: 93.5%;
+    width: 375px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
+    align-items: center;
 
     h2 {
         font-size: 30px;
+    }
+    @media (max-width: 414px) {
+        width: 93.5%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        h2 {
+            font-size: 30px;
+        }
     }
 `;
 
 const PreviousSectionButton = styled.div`
     background-color: #d4dfe8;
-    width: 140px;
+    width: 160px;
     height: 27px;
     border-radius: 5px;
     display: flex;
@@ -30,10 +43,12 @@ const PreviousSectionButton = styled.div`
 
     .fas {
         font-size: 14px;
+        color: black;
     }
 
     p {
         font-size: 14px;
+        color: black;
     }
 `;
 
@@ -230,10 +245,15 @@ class Flashcard extends Component {
                     <Header />
                     <FlashcardContent>
                         <h2>{this.props.data[0].section}</h2>
-                        <PreviousSectionButton>
-                            <i className="fas fa-arrow-left" />
-                            <p>{this.props.data[0].module}</p>
-                        </PreviousSectionButton>
+                        <Link
+                            to={`/${this.props.data[0].path}`}
+                            style={{ textDecoration: 'none' }}
+                        >
+                            <PreviousSectionButton>
+                                <i className="fas fa-arrow-left" />
+                                <p>{this.props.data[0].module}</p>
+                            </PreviousSectionButton>
+                        </Link>
                         <div onClick={this.changeSide}>
                             <ReactCardFlip
                                 isFlipped={isFlipped}

@@ -3,45 +3,40 @@ import styled, { keyframes } from 'styled-components';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
-// --------- Imported Components ------------ //
-
-import Header from '../header/Header';
-
 // -------- Styled Components -------------- //
 
 const TopContent = styled.div`
-    @media (max-width: 414px) {
-        padding-left: 10px;
-        padding-right: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    box-sizing: border-box;
+    h1 {
+    }
+    input {
+        width: 100%;
+        height: 55px;
+        margin-right: 10px;
+        margin: 0 auto;
+        padding: 15px;
+        border-radius: 5px;
+        font-size: 18px;
+        border: transparent;
         box-sizing: border-box;
-        h1 {
-        }
-        input {
-            width: 100%;
-            height: 55px;
-            margin-right: 10px;
-            margin: 0 auto;
-            padding: 15px;
-            border-radius: 5px;
-            font-size: 18px;
-            border: transparent;
-            box-sizing: border-box;
-            position: relative;
-        }
-        input:focus {
-            outline: none;
-        }
-        input::placeholder {
-            color: rgb(180, 180, 180);
-        }
-        .icon {
-            position: absolute;
-            right: 0;
-            margin-right: 20px;
-            margin-top: 10px;
-        }
+        position: relative;
+    }
+    input:focus {
+        outline: none;
+    }
+    input::placeholder {
+        color: rgb(180, 180, 180);
+    }
+    .icon {
+        position: absolute;
+        right: 0;
+        margin-right: 20px;
+        margin-top: 10px;
     }
 `;
+
 const MainContent = styled.div`
     a {
         color: black;
@@ -52,31 +47,30 @@ const MainContent = styled.div`
 `;
 
 const Card = styled.div`
-    @media (max-width: 414px) {
-        background: rgb(214, 223, 231);
-        margin: 20px 10px 20px 10px;
-        border-radius: 5px;
-        padding: 10px 0 10px 0;
+    background: rgb(214, 223, 231);
+    margin: 20px 10px 20px 10px;
+    border-radius: 5px;
+    padding: 10px 0 10px 0;
+    max-width: 375px;
 
-        .first-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 10px 15px 10px;
-            p {
-                margin: 0;
-                font-size: 20px;
-            }
-            .number {
-                font-size: 16px;
-                padding-top: 3px;
-                color: #ba112e;
-            }
+    .first-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 10px 15px 10px;
+        p {
+            margin: 0;
+            font-size: 20px;
         }
-        .p {
-            padding: 10px;
-            margin: 0px;
+        .number {
+            font-size: 16px;
+            padding-top: 3px;
+            color: #ba112e;
         }
+    }
+    .p {
+        padding: 10px;
+        margin: 0px;
     }
 `;
 
@@ -131,6 +125,7 @@ class Module extends Component {
         this.props.data[0].section = item;
         this.props.data[0].module = this.props.module;
         this.props.data[0].flashcards = this.state.flashcards[index];
+        this.props.data[0].path = this.props.url;
         console.log('PROPS', this.props.data);
     }
 
