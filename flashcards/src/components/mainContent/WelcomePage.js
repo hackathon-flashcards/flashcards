@@ -5,7 +5,12 @@ import axios from 'axios';
 // import FullStack from './FullStack';
 
 const HeaderContent = styled.div`
+  padding-left: 10px;
+  padding-right: 10px;
 
+  p {
+    padding-right: 30px;
+  }
   @media (max-width: 414px) {
     padding-left: 10px;
     padding-right: 10px;
@@ -17,6 +22,57 @@ const HeaderContent = styled.div`
 `;
 
 const MainContent = styled.div`
+padding-top: 30px;
+text-align: center;
+
+
+.box {
+  color: white;
+  font-size: 18px;
+  height: 40px;
+  max-width: 450px;
+  border-radius: 5px;
+  line-height: 40px;
+  vertical-align: middle;
+  padding: 10px 10px 10px 10px;
+  margin: 10px 10px 20px 10px;
+}
+.android {
+  background: rgb(20, 18, 30);
+}
+.android:hover {
+  transform: scale(1.1);
+}
+.fullstack {
+  background: rgb(46, 45, 73);
+}
+.fullstack:hover {
+  transform: scale(1.1);
+}
+.datas {
+  background: rgb(95, 180, 225);
+}
+.datas:hover {
+  transform: scale(1.1);
+}
+.uxd {
+  background: rgb(20, 18, 30);
+}
+.uxd:hover {
+  transform: scale(1.1);
+}
+.ios {
+  background: rgb(26, 62, 116);
+}
+.ios:hover {
+  transform: scale(1.1);
+}
+.cs {
+  background: rgb(47, 98, 169);
+}
+.cs:hover {
+  transform: scale(1.1);
+}
 
   @media (max-width: 414px) {
     padding-top: 30px;
