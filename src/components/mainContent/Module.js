@@ -6,7 +6,7 @@ import logo from '../../assets/logo.png';
 
 // -------- Styled Components -------------- //
 const DesktopModule = styled.div`
-  @media (max-width: 1900px) {
+  @media (max-width: 2500px) {
     display: flex;
     justify-content: space-between;
     // flex-direction: row;
@@ -58,7 +58,8 @@ const DesktopSide = styled.div`
     padding: 0 0px 20px 30px;
   }
   .text:hover{
-    transform: scale(1.05);
+   
+    background: rgb(47, 44, 75);
    }
 
   @media (max-width: 414px) {

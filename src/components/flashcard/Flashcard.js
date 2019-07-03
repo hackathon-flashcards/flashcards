@@ -11,7 +11,7 @@ import Header from '../header/Header';
 // -------- Styled Components -------------- //
 
 const DesktopFlashcard = styled.div`
-  @media (max-width: 1900px) {
+  @media (max-width: 2500px) {
     display: flex;
     justify-content: space-between;
     // flex-direction: row;
@@ -185,7 +185,7 @@ const PreviousSectionButton = styled.div`
 `;
 
 const Card = styled.div`
-@media (max-width: 1800px) {
+@media (max-width: 2500px) {
   margin-top: 45px;
   width: 500px;
   height: 408px;
