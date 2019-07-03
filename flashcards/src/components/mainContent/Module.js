@@ -354,7 +354,7 @@ class Module extends Component {
                     <MainContent>
                         {this.state.section
                             .filter(cardstack => {
-                                if (this.state.searchText !== '') {
+                                if (this.state.searchText !== '' && cardstack) {
                                     return cardstack
                                         .toLowerCase()
                                         .includes(
