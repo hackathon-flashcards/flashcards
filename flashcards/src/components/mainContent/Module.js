@@ -106,7 +106,8 @@ const TopContent = styled.div`
   @media (max-width: 414px) {
     padding-left: 10px;
     padding-right: 10px;
-    box-sizing : border-box;
+    box-sizing: border-box;
+
     h1 {
       
     }
@@ -126,11 +127,45 @@ const TopContent = styled.div`
       box-sizing : border-box;
       position: relative;
     }
-    input:focus{
-      outline: none;
-    }
-    input::placeholder {
-      color: rgb(180, 180, 180);
+
+    div {
+        box-sizing: border-box;
+        background-color: #ffffff;
+        width: 475px;
+        height: 55px;
+        padding: 15px;
+        border-radius: 5px;
+        margin-right: 10px;
+        position: relative;
+
+        input {
+            width: 94%;
+            height: 100%;
+            margin: 0 auto;
+            font-size: 18px;
+            border: transparent;
+            position: relative;
+        }
+        input:focus {
+            outline: none;
+        }
+        input::placeholder {
+            color: rgb(180, 180, 180);
+        }
+        .fas,
+        .far {
+            position: absolute;
+            right: 0;
+            top: 18%;
+            margin-right: 20px;
+            margin-top: 10px;
+            color: rgb(180, 180, 180);
+        }
+
+        .far {
+            color: #000000;
+            cursor: pointer;
+        }
     }
     .icon {
       position: absolute;
@@ -139,7 +174,6 @@ const TopContent = styled.div`
       margin-top: 10px;
       transform: translate(0px, 0px);
     }
-  }
 `;
 
 const MainContent = styled.div`
@@ -224,11 +258,42 @@ const Card = styled.div`
       }
     }
     .p {
-      padding: 10px;
-      margin: 0px;
+        padding: 10px;
+        margin: 0px;
     }
-  }
-`
+
+    @media (max-width: 414px) {
+        background: rgb(214, 223, 231);
+        margin: 20px 10px 20px 10px;
+        border-radius: 5px;
+        padding: 10px 0 10px 0;
+        max-width: 475px;
+
+        :hover {
+            transform: scale(1.1);
+        }
+
+        .first-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 10px 15px 10px;
+            p {
+                margin: 0;
+                font-size: 20px;
+            }
+            .number {
+                font-size: 16px;
+                padding-top: 3px;
+                color: #ba112e;
+            }
+        }
+        .p {
+            padding: 10px;
+            margin: 0px;
+        }
+    }
+`;
 
 const LoadingDiv = styled.div`
     height: 90vh;
@@ -267,7 +332,8 @@ class Module extends Component {
 
         this.state = {
             section: [],
-            flashcards: []
+            flashcards: [],
+            searchText: ''
         };
         this.handleClick = this.handleClick.bind(this);
         console.log(this.props.data);
@@ -284,6 +350,19 @@ class Module extends Component {
         this.props.data[0].path = this.props.url;
         console.log('PROPS', this.props.data);
     }
+
+    handleInputChange = event => {
+        this.setState({
+            [event.target.name]: event.target.value
+        });
+    };
+
+    resetSearch = event => {
+        event.preventDefault();
+        this.setState({
+            searchText: ''
+        });
+    };
 
     componentDidMount() {
         const fswUrl =
@@ -428,62 +507,58 @@ class Module extends Component {
                         <div className="text-field">
                             <input
                                 type="text"
-                                className="input"
+                                name="searchText"
                                 placeholder="Search..."
+                                value={this.state.searchText}
+                                onChange={this.handleInputChange}
                             />
-                            <svg
-                                className="icon"
-                                width="32"
-                                height="32"
-                                xmlns="http://www.w3.org/2000/svg"
-                            >
-                                <title />
-                                <desc />
-
-                                <g>
-                                    <title>background</title>
-                                    <rect
-                                        fill="none"
-                                        id="canvas_background"
-                                        height="402"
-                                        width="582"
-                                        y="-1"
-                                        x="-1"
-                                    />
-                                </g>
-                                <g>
-                                    <title>Layer 1</title>
-                                    <path
-                                        fill="#c8c8c8"
-                                        id="search"
-                                        d="m19.42712,20.42712c-1.38987,0.99036 -3.09047,1.57288 -4.92712,1.57288c-4.69442,0 -8.5,-3.80558 -8.5,-8.5c0,-4.69442 3.80558,-8.5 8.5,-8.5c4.69442,0 8.5,3.80558 8.5,8.5c0,2.34721 -0.95139,4.47221 -2.48959,6.01041l5.99736,5.99736c0.27506,0.27506 0.26837,0.71609 -0.00777,0.99223c-0.27807,0.27807 -0.72038,0.27962 -0.99223,0.00777l-6.08065,-6.08065l0,0zm-4.92712,0.57288c4.14214,0 7.5,-3.35786 7.5,-7.5c0,-4.14214 -3.35786,-7.5 -7.5,-7.5c-4.14214,0 -7.5,3.35786 -7.5,7.5c0,4.14214 3.35786,7.5 7.5,7.5l0,0z"
-                                    />
-                                </g>
-                            </svg>
+                            {this.state.searchText === '' ? (
+                                <i className="fas fa-search" />
+                            ) : (
+                                <i
+                                    className="far fa-times-circle"
+                                    onClick={this.resetSearch}
+                                />
+                            )}
                         </div>
                     </TopContent>
                     <MainContent>
-                        {this.state.section.map((item, index) => (
-                            <Link
-                                to={`/${this.props.url}/flashcard/${index + 1}`}
-                                key={index}
-                                style={{ textDecoration: 'none' }}
-                            >
-                                <Card onClick={() => this.handleClick(item)}>
-                                    <div className="first-row">
-                                        <p className="text">{item}</p>
-                                        <p className="number">
-                                            {
-                                                this.state.flashcards[index]
-                                                    .length
-                                            }{' '}
-                                            Flashcards
-                                        </p>
-                                    </div>
-                                </Card>
-                            </Link>
-                        ))}
-                        
+                        {this.state.section
+                            .filter(cardstack => {
+                                if (this.state.searchText !== '' && cardstack) {
+                                    return cardstack
+                                        .toLowerCase()
+                                        .includes(
+                                            this.state.searchText.toLowerCase()
+                                        );
+                                } else {
+                                    return cardstack;
+                                }
+                            })
+                            .map((item, index) => (
+                                <Link
+                                    to={`/${this.props.url}/flashcard/${index +
+                                        1}`}
+                                    key={index}
+                                    style={{ textDecoration: 'none' }}
+                                >
+                                    <Card
+                                        onClick={() => this.handleClick(item)}
+                                    >
+                                        <div className="first-row">
+                                            <p>{item}</p>
+                                            <p className="number">
+                                                {
+                                                    this.state.flashcards[index]
+                                                        .length
+                                                }{' '}
+                                                Flashcards
+                                            </p>
+                                        </div>
+                                        <p className="p" />
+                                    </Card>
+                                </Link>
+                            ))}
                     </MainContent>
                 </div>
             </DesktopModule>
