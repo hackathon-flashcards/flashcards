@@ -64,7 +64,7 @@ const DesktopSide = styled.div`
     padding: 0 0px 20px 30px;
   }
   .text:hover{
-    transform: scale(1.05);
+    background: rgb(47, 44, 75);
    }
 
    @media (max-width: 1200px){
