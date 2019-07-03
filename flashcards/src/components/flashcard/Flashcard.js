@@ -10,25 +10,18 @@ import Header from '../header/Header';
 // -------- Styled Components -------------- //
 
 const FlashcardContent = styled.div`
-    width: 375px;
+    width: 90%;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    align-items: center;
 
     h2 {
-        font-size: 30px;
+        font-size: 3rem;
+        margin-top: 2rem;
     }
-    @media (max-width: 414px) {
-        width: 93.5%;
-        margin: 0 auto;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
 
-        h2 {
-            font-size: 30px;
-        }
+    @media (max-width: 500px) {
+        width: 93.5%;
     }
 `;
 
@@ -37,9 +30,11 @@ const PreviousSectionButton = styled.div`
     width: 160px;
     height: 27px;
     border-radius: 5px;
+    margin-top: 3rem;
     display: flex;
     justify-content: space-around;
     align-items: center;
+    align-self: flex-start;
 
     .fas {
         font-size: 14px;
@@ -47,7 +42,7 @@ const PreviousSectionButton = styled.div`
     }
 
     p {
-        font-size: 14px;
+        font-size: 1.4rem;
         color: black;
     }
 `;
@@ -58,6 +53,10 @@ const Card = styled.div`
     height: 308px;
     background-color: #ffffff;
     border-radius: 5px;
+
+    @media (max-width: 500px) {
+        width: 100%;
+    }
 `;
 
 const CardContent = styled.div`
@@ -70,7 +69,7 @@ const CardContent = styled.div`
     position: relative;
 
     p {
-        font-size: 16px;
+        font-size: 1.6rem;
         line-height: 1.5;
         width: 90%;
     }
@@ -84,18 +83,18 @@ const SideIndicator = styled.div`
     right: 20px;
 
     p {
-        font-size: 14px;
+        font-size: 1.4rem;
     }
 `;
 
 const CardCount = styled.div`
     width: 100%;
-    margin-top: 12px;
+    margin: 3rem 0 2rem 0;
     display: flex;
     justify-content: center;
 
     span {
-        margin: 0 2px;
+        margin: 0 0.2rem;
         font-weight: bold;
     }
 `;
@@ -118,6 +117,7 @@ const NextButton = styled.div`
     background-color: #2f2c4b;
     border-radius: 5px;
     display: flex;
+    align-items: center;
     justify-content: center;
     position: relative;
     cursor: pointer;

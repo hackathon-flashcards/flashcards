@@ -6,28 +6,27 @@ import { Link } from 'react-router-dom';
 // -------- Styled Components -------------- //
 
 const TopContent = styled.div`
-    padding-left: 10px;
-    padding-right: 10px;
-    box-sizing: border-box;
+    padding: 0 1rem;
 
     h1 {
+        font-size: 3rem;
+        margin: 2rem 0;
     }
 
     div {
-        box-sizing: border-box;
         background-color: #ffffff;
         width: 475px;
         height: 55px;
-        padding: 15px;
+        padding: 1.5rem;
         border-radius: 5px;
-        margin-right: 10px;
+        margin-right: 1rem;
         position: relative;
 
         input {
             width: 94%;
             height: 100%;
             margin: 0 auto;
-            font-size: 18px;
+            font-size: 1.8rem;
             border: transparent;
             position: relative;
         }
@@ -42,8 +41,8 @@ const TopContent = styled.div`
             position: absolute;
             right: 0;
             top: 18%;
-            margin-right: 20px;
-            margin-top: 10px;
+            margin-right: 2rem;
+            margin-top: 1rem;
             color: rgb(180, 180, 180);
         }
 
@@ -53,16 +52,24 @@ const TopContent = styled.div`
         }
     }
 
-    @media (max-width: 414px) {
-        padding-left: 10px;
-        padding-right: 10px;
-        box-sizing: border-box;
+    @media (max-width: 500px) {
+        padding-left: 1rem;
+        padding-right: 1rem;
 
         div {
             width: 100%;
+            height: 40px;
+            padding: 0.5rem 1rem;
 
             input {
                 width: 90%;
+                font-size: 1.4rem;
+                height: 100%;
+            }
+
+            .fas,
+            .far {
+                top: 5%;
             }
         }
     }
@@ -73,16 +80,17 @@ const MainContent = styled.div`
         color: black;
     }
 
-    @media (max-width: 414px) {
+    @media (max-width: 500) {
     }
 `;
 
 const Card = styled.div`
     background: rgb(214, 223, 231);
-    margin: 20px 10px 20px 10px;
+    margin: 2rem 1rem;
     border-radius: 5px;
-    padding: 10px 0 10px 0;
+    padding: 1rem 0;
     max-width: 475px;
+
     :hover {
         transform: scale(1.1);
     }
@@ -90,52 +98,38 @@ const Card = styled.div`
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 0 10px 15px 10px;
+        padding: 0 1rem;
         font-weight: bold;
         p {
             margin: 0;
-            font-size: 20px;
+            font-size: 1.8rem;
         }
         .number {
-            font-size: 16px;
-            padding-top: 3px;
+            font-size: 1.4rem;
             color: #ba112e;
         }
     }
-    .p {
-        padding: 10px;
-        margin: 0px;
-    }
 
-    @media (max-width: 414px) {
-        background: rgb(214, 223, 231);
-        margin: 20px 10px 20px 10px;
-        border-radius: 5px;
-        padding: 10px 0 10px 0;
-        max-width: 475px;
-
-        :hover {
-            transform: scale(1.1);
-        }
+    @media (max-width: 500px) {
+        height: 7rem;
 
         .first-row {
+            height: 100%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 10px 15px 10px;
+            padding: 0 1rem;
+
             p {
-                margin: 0;
-                font-size: 20px;
+                font-size: 1.8rem;
+            }
+
+            p:first-child {
+                width: 75%;
             }
             .number {
-                font-size: 16px;
-                padding-top: 3px;
-                color: #ba112e;
+                font-size: 1.4rem;
             }
-        }
-        .p {
-            padding: 10px;
-            margin: 0px;
         }
     }
 `;
@@ -148,6 +142,17 @@ const LoadingDiv = styled.div`
     justify-content: center;
     align-items: center;
     font-family: 'Lato', sans-serif;
+
+    h2 {
+        font-size: 1.8rem;
+        font-weight: bold;
+        margin: 2rem 0;
+    }
+
+    p {
+        font-size: 1.6rem;
+        margin: 1.6rem 0;
+    }
 `;
 
 const spinning = keyframes`
@@ -161,8 +166,8 @@ const spinning = keyframes`
 `;
 
 const LoadingIcon = styled.div`
-    border: 10px solid #d4dfe8;
-    border-top: 10px solid #2f2c4b;
+    border: 1rem solid #d4dfe8;
+    border-top: 1rem solid #2f2c4b;
     border-radius: 50%;
     width: 50px;
     height: 50px;
@@ -384,7 +389,6 @@ class Module extends Component {
                                                 Flashcards
                                             </p>
                                         </div>
-                                        <p className="p" />
                                     </Card>
                                 </Link>
                             ))}
