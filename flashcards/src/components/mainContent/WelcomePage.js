@@ -26,14 +26,17 @@ padding-top: 30px;
 text-align: center;
 
 
+}
 .box {
   color: white;
   font-size: 18px;
-  height: 40px;
+  height: 125px;
   max-width: 450px;
   border-radius: 5px;
   line-height: 40px;
-  vertical-align: middle;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 10px 10px 10px 10px;
   margin: 10px 10px 20px 10px;
 }
@@ -162,16 +165,20 @@ class WelcomePage extends Component {
       </p>
     </HeaderContent>
     <MainContent>
-
+      <div className='allboxes'>
+      <div className='boxestop'>
         <Link to="/android_development" style={{ textDecoration: 'none' }}><div className="box android">Android Development</div></Link>
         <Link to="/full_stack" style={{ textDecoration: 'none' }}><div className="box fullstack">Full Stack Web Development</div></Link>
         {/* <Link to="/full_stack" ><div className="box fullstack">Full Stack Web Development</div></Link> */}
 
         <Link to="/data_science" style={{ textDecoration: 'none' }}><div className="box datas">Data Science</div></Link>
+      </div>
+      <div className='boxesbottom'>
         <Link to="/ux_design" style={{ textDecoration: 'none' }}><div className="box uxd">User Experience Design</div></Link>
         <Link to="/ios_development" style={{ textDecoration: 'none' }}><div className="box ios">iOS Development</div></Link>
         <Link to="/computer_science" style={{ textDecoration: 'none' }}><div className="box cs">Computer Science</div></Link>
-
+      </div>
+      </div>
     </MainContent>
     </div>
   );
